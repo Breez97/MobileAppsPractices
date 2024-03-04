@@ -7,7 +7,7 @@
 ---
 
 - 1-я практическая работа (Выполнена) : <a href="https://github.com/Breez97/MobileAppsPractices/tree/main/Lesson1">Практическая 1</a>
-- 2-я практическая работа
+- 2-я практическая работа (Выполнена) : <a href="https://github.com/Breez97/MobileAppsPractices/tree/main/Lesson2">Практическая 2</a>
 - 3-я практическая работа
 - 4-я практическая работа
 - 5-я практическая работа
