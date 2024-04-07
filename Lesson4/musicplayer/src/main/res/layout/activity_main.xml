@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#83847C"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="77dp"
+            android:layout_weight="0"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/hideTrack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                android:contentDescription="hideTrack"
+                android:scaleX="0.3"
+                android:scaleY="0.3"
+                app:srcCompat="@drawable/arrow_down"
+                app:tint="#C1C2BC" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textNowPlaying"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Now playing"
+                    android:textAlignment="center"
+                    android:textColor="#C1C2BC"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/titleOfAlbum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Album Title"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/showTracklist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                android:contentDescription="showTracklist"
+                android:scaleX="0.3"
+                android:scaleY="0.3"
+                app:srcCompat="@drawable/list"
+                app:tint="#C1C2BC" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="459dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/cover" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/menu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#00FFFFFF"
+                        android:contentDescription="menu"
+                        android:scaleX="0.4"
+                        android:scaleY="0.4"
+                        app:srcCompat="@drawable/menu"
+                        app:tint="#C1C2BC" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/titleOfTrack"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30dp"
+                            android:text="Track Title"
+                            android:textAlignment="center"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/artistName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="Artist Name"
+                            android:textAlignment="center"
+                            android:textColor="#C1C2BC"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <ImageButton
+                        android:id="@+id/share"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#00FFFFFF"
+                        android:contentDescription="share"
+                        android:scaleX="0.4"
+                        android:scaleY="0.4"
+                        app:srcCompat="@drawable/share"
+                        app:tint="#C1C2BC" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <SeekBar
+                        android:id="@+id/seekBar"
+                        android:layout_width="292dp"
+                        android:layout_height="47dp"
+                        android:layout_marginLeft="60dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#C1C2BC"
+                        android:progress="30"
+                        android:progressBackgroundTint="#C1C2BC"
+                        android:progressTint="#FFFFFF"
+                        android:thumbTint="#FFFFFF" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/currentTimeOfTrack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="1:23"
+                            android:textAlignment="center"
+                            android:textColor="#C1C2BC"
+                            android:textSize="14sp" />
+
+                        <Space
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:id="@+id/totalTimeOfTrack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="3:45"
+                            android:textAlignment="center"
+                            android:textColor="#C1C2BC"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="20" />
+
+                    <ImageButton
+                        android:id="@+id/previousTrackButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#00FFFFFF"
+                        android:scaleX="0.5"
+                        android:scaleY="0.5"
+                        app:tint="#FFFFFF"
+                        android:contentDescription="previousTrackButton"
+                        app:srcCompat="@drawable/previous_track" />
+
+                    <ImageButton
+                        android:id="@+id/pauseTrackButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#00FFFFFF"
+                        android:scaleX="0.5"
+                        android:scaleY="0.5"
+                        app:tint="#FFFFFF"
+                        android:contentDescription="pauseTrackButton"
+                        app:srcCompat="@drawable/pause" />
+
+                    <ImageButton
+                        android:id="@+id/nextTrackButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#00FFFFFF"
+                        android:scaleX="0.5"
+                        android:scaleY="0.5"
+                        app:tint="#FFFFFF"
+                        android:contentDescription="nextTrackButton"
+                        app:srcCompat="@drawable/next_track" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="20" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/repeatTrackButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#00FFFFFF"
+                        android:scaleX="0.3"
+                        android:scaleY="0.3"
+                        app:tint="#FFFFFF"
+                        app:srcCompat="@drawable/repeat"
+                        android:contentDescription="repeatTrackButton"/>
+
+                    <ImageButton
+                        android:id="@+id/timerTrackButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#00FFFFFF"
+                        android:scaleX="0.3"
+                        android:scaleY="0.3"
+                        app:tint="#FFFFFF"
+                        app:srcCompat="@drawable/timer"
+                        android:contentDescription="timerTrackButton"/>
+
+                    <ImageButton
+                        android:id="@+id/shuffleTrackButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#00FFFFFF"
+                        android:scaleX="0.3"
+                        android:scaleY="0.3"
+                        app:tint="#FFFFFF"
+                        app:srcCompat="@drawable/shuffle"
+                        android:contentDescription="shuffleTrackButton"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
