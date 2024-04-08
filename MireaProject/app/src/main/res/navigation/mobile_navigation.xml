@@ -12,14 +12,19 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/nav_dataFragment"
-        android:name="ru.mirea.shamrovio.mireaproject.ui.data.DataFragment"
+        android:name="ru.mirea.shamrovio.mireaproject.ui.lesson3.DataFragment"
         android:label="@string/menu_dataFragment"
         tools:layout="@layout/fragment_data" />
     <fragment
         android:id="@+id/nav_webViewFragment"
-        android:name="ru.mirea.shamrovio.mireaproject.ui.webview.WebViewFragment"
+        android:name="ru.mirea.shamrovio.mireaproject.ui.lesson3.WebViewFragment"
         android:label="@string/menu_webViewFragment"
         tools:layout="@layout/fragment_web_view" />
+    <fragment
+        android:id="@+id/nav_notificationFragment"
+        android:name="ru.mirea.shamrovio.mireaproject.ui.lesson4.WorkerFragment"
+        android:label="@string/menu_notification"
+        tools:layout="@layout/fragment_worker"/>
 
     <!--    <fragment-->
     <!--        android:id="@+id/nav_gallery"-->

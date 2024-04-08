@@ -1,4 +1,4 @@
-package ru.mirea.shamrovio.mireaproject.ui.webview;
+package ru.mirea.shamrovio.mireaproject.ui.lesson3;
 
 import android.os.Bundle;
 

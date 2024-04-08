@@ -16,6 +16,10 @@
             android:id="@+id/nav_webViewFragment"
             android:icon="@drawable/ic_menu_web_view"
             android:title="@string/menu_webViewFragment"/>
+        <item
+            android:id="@+id/nav_notificationFragment"
+            android:icon="@drawable/notification"
+            android:title="@string/menu_notification"/>
 
         <!--        <item-->
         <!--            android:id="@+id/nav_gallery"-->
