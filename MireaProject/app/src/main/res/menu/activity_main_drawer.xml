@@ -18,8 +18,20 @@
             android:title="@string/menu_webViewFragment"/>
         <item
             android:id="@+id/nav_notificationFragment"
-            android:icon="@drawable/notification"
+            android:icon="@drawable/notification_icon"
             android:title="@string/menu_notification"/>
+        <item
+            android:id="@+id/nav_compassFragment"
+            android:icon="@drawable/compass_icon"
+            android:title="@string/menu_compass"/>
+        <item
+            android:id="@+id/nav_notesFragment"
+            android:icon="@drawable/notes_icon"
+            android:title="@string/menu_notes"/>
+        <item
+            android:id="@+id/nav_microphoneFragment"
+            android:icon="@drawable/microphone_icon"
+            android:title="@string/menu_microphone"/>
 
         <!--        <item-->
         <!--            android:id="@+id/nav_gallery"-->

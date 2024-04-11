@@ -44,7 +44,7 @@ public class NotificationWorker extends Worker {
 		NotificationCompat.Builder _builder = new NotificationCompat.Builder(_thisContext, CHANNEL_ID)
 				.setContentTitle(_title)
 				.setContentText(_description)
-				.setSmallIcon(R.drawable.notification)
+				.setSmallIcon(R.drawable.notification_icon)
 				.setPriority(NotificationCompat.PRIORITY_HIGH);
 
 		int _importance = NotificationManager.IMPORTANCE_DEFAULT;

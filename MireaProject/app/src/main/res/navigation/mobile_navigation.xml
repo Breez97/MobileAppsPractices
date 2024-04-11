@@ -25,6 +25,21 @@
         android:name="ru.mirea.shamrovio.mireaproject.ui.lesson4.WorkerFragment"
         android:label="@string/menu_notification"
         tools:layout="@layout/fragment_worker"/>
+    <fragment
+        android:id="@+id/nav_compassFragment"
+        android:name="ru.mirea.shamrovio.mireaproject.ui.lesson5.CompassFragment"
+        android:label="@string/menu_compass"
+        tools:layout="@layout/fragment_compass"/>
+    <fragment
+        android:id="@+id/nav_notesFragment"
+        android:name="ru.mirea.shamrovio.mireaproject.ui.lesson5.NotesFragment"
+        android:label="@string/menu_notes"
+        tools:layout="@layout/fragment_notes"/>
+    <fragment
+        android:id="@+id/nav_microphoneFragment"
+        android:name="ru.mirea.shamrovio.mireaproject.ui.lesson5.MicrophoneFragment"
+        android:label="@string/menu_microphone"
+        tools:layout="@layout/fragment_microphone"/>
 
     <!--    <fragment-->
     <!--        android:id="@+id/nav_gallery"-->
