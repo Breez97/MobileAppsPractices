@@ -40,6 +40,16 @@
         android:name="ru.mirea.shamrovio.mireaproject.ui.lesson5.MicrophoneFragment"
         android:label="@string/menu_microphone"
         tools:layout="@layout/fragment_microphone"/>
+    <fragment
+        android:id="@+id/nav_profileFragment"
+        android:name="ru.mirea.shamrovio.mireaproject.ui.lesson6.ProfileFragment"
+        android:label="@string/menu_profile"
+        tools:layout="@layout/fragment_profile"/>
+    <fragment
+        android:id="@+id/nav_fileProcessingFragment"
+        android:name="ru.mirea.shamrovio.mireaproject.ui.lesson6.fileprocessing.FileProcessingFragment"
+        android:label="@string/menu_fileProcessing"
+        tools:layout="@layout/fragment_file_processing"/>
 
     <!--    <fragment-->
     <!--        android:id="@+id/nav_gallery"-->

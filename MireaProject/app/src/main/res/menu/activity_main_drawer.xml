@@ -32,6 +32,14 @@
             android:id="@+id/nav_microphoneFragment"
             android:icon="@drawable/microphone_icon"
             android:title="@string/menu_microphone"/>
+        <item
+            android:id="@+id/nav_profileFragment"
+            android:icon="@drawable/profile_icon"
+            android:title="@string/menu_profile"/>
+        <item
+            android:id="@+id/nav_fileProcessingFragment"
+            android:icon="@drawable/file_icon"
+            android:title="@string/menu_fileProcessing"/>
 
         <!--        <item-->
         <!--            android:id="@+id/nav_gallery"-->
