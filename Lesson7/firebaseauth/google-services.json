@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "518571643864",
+    "project_id": "lesson7-48ec1",
+    "storage_bucket": "lesson7-48ec1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:518571643864:android:2148087927e16b4e7b18ad",
+        "android_client_info": {
+          "package_name": "ru.mirea.shamrovio.firebaseauth"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDH-CdqmXW4ClPioYn-kVmmngiws59t1-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
