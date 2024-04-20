@@ -11,8 +11,8 @@
 - 3-я практическая работа (**Зачтена**) : [Практическая 3](https://github.com/Breez97/MobileAppsPractices/tree/main/Lesson3) -> [Контрольное задание (MireaProject)](https://github.com/Breez97/MobileAppsPractices/tree/main/MireaProject/app/src/main/java/ru/mirea/shamrovio/mireaproject/ui/lesson3)
 - 4-я практическая работа (**Зачтена**) : [Практическая 4](https://github.com/Breez97/MobileAppsPractices/tree/main/Lesson4) -> [Контрольное задание (MireaProject)](https://github.com/Breez97/MobileAppsPractices/tree/main/MireaProject/app/src/main/java/ru/mirea/shamrovio/mireaproject/ui/lesson4)
 - 5-я практическая работа (**Зачтена**) : [Практическая 5](https://github.com/Breez97/MobileAppsPractices/tree/main/Lesson5) -> [Контрольное задание (MireaProject)](https://github.com/Breez97/MobileAppsPractices/tree/main/MireaProject/app/src/main/java/ru/mirea/shamrovio/mireaproject/ui/lesson5)
-- 6-я практическая работа (**Выполнена**) : 
-- 7-я практическая работа
+- 6-я практическая работа (**Выполнена**) : [Практическая 6](https://github.com/Breez97/MobileAppsPractices/tree/main/Lesson6) -> [Контрольное задание (MireaProject)](https://github.com/Breez97/MobileAppsPractices/tree/main/MireaProject/app/src/main/java/ru/mirea/shamrovio/mireaproject/ui/lesson6)
+- 7-я практическая работа (**Выполнена**) : [Практическая 7](https://github.com/Breez97/MobileAppsPractices/tree/main/Lesson7) -> [Контрольное задание (MireaProject)](https://github.com/Breez97/MobileAppsPractices/tree/main/MireaProject/app/src/main/java/ru/mirea/shamrovio/mireaproject/ui/lesson7)
 - 8-я практическая работа
 
 ---
