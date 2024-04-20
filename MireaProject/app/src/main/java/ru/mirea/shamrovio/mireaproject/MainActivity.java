@@ -1,8 +1,11 @@
 package ru.mirea.shamrovio.mireaproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -15,6 +18,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import ru.mirea.shamrovio.mireaproject.databinding.ActivityMainBinding;
+import ru.mirea.shamrovio.mireaproject.ui.lesson7.Authentication;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,6 +43,25 @@ public class MainActivity extends AppCompatActivity {
 		});
 		DrawerLayout drawer = binding.drawerLayout;
 		NavigationView navigationView = binding.navView;
+
+		// Set user email in main window
+		View headerView = navigationView.getHeaderView(0);
+		TextView textViewUserEmail = headerView.findViewById(R.id.textViewUserEmail);
+
+		String email = (String) getIntent().getSerializableExtra("UserEmail");
+		textViewUserEmail.setText(email);
+
+		Button logOut = headerView.findViewById(R.id.buttonLogOut);
+		logOut.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(getBaseContext(), Authentication.class);
+				intent.putExtra("key", "logout");
+				intent.putExtra("email", email);
+				startActivity(intent);
+			}
+		});
+
 		// Passing each menu ID as a set of Ids because each
 		// menu should be considered as top level destinations.
 		mAppBarConfiguration = new AppBarConfiguration.Builder(
