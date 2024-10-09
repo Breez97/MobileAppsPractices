@@ -2,7 +2,7 @@ package ru.mirea.shamrov.freshchef.domain.usecases;
 
 import java.util.List;
 
-import ru.mirea.shamrov.freshchef.domain.models.Dish;
+import ru.mirea.shamrov.freshchef.domain.models.DishDTO;
 import ru.mirea.shamrov.freshchef.domain.repository.DishRepository;
 
 public class GetAllDishesUseCase {
@@ -13,7 +13,7 @@ public class GetAllDishesUseCase {
 		this.dishRepository = dishRepository;
 	}
 
-	public List<Dish> execute() {
+	public List<DishDTO> execute() {
 		return dishRepository.getAllDishes();
 	}
 

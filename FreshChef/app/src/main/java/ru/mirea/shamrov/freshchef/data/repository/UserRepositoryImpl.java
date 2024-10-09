@@ -1,33 +1,41 @@
 package ru.mirea.shamrov.freshchef.data.repository;
 
-import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
-import ru.mirea.shamrov.freshchef.domain.models.User;
+import ru.mirea.shamrov.freshchef.data.storage.UserStorage;
+import ru.mirea.shamrov.freshchef.data.storage.models.User;
+import ru.mirea.shamrov.freshchef.domain.models.UserDTO;
 import ru.mirea.shamrov.freshchef.domain.repository.UserRepository;
 
 public class UserRepositoryImpl implements UserRepository {
 
-	private final List<User> USERS = new ArrayList<>(
-			List.of(
-					new User(1, "Ilya", new ArrayList<>()),
-					new User(2, "Sergey", new ArrayList<>(List.of(1)))
-			)
-	);
+	private final UserStorage userStorage;
+
+	public UserRepositoryImpl(UserStorage userStorage) {
+		this.userStorage = userStorage;
+	}
 
 	@Override
-	public List<User> getAllUsers() {
-		return USERS;
+	public List<UserDTO> getAllUsers() {
+		List<User> resultUsers = userStorage.getAllUsers();
+		return resultUsers.stream()
+				.map(user -> mapToUserDTO(user))
+				.collect(Collectors.toList());
 	}
 
 	@Override
 	public List<Integer> getUserFavoriteDishes(String name) {
-		for (User currentUser : USERS) {
-			if (currentUser.getName().equalsIgnoreCase(name)) {
-				return currentUser.getFavoriteDishes();
-			}
-		}
-		return new ArrayList<>(List.of(-1));
+		return userStorage.getUserFavoriteDishes(name);
+	}
+
+	private User mapToUser(UserDTO userDTO) {
+		return new User(userDTO.getId(), userDTO.getName(), userDTO.getFavoriteDishes(), LocalDate.now());
+	}
+
+	private UserDTO mapToUserDTO(User user) {
+		return new UserDTO(user.getId(), user.getName(), user.getFavoriteDishes());
 	}
 
 }

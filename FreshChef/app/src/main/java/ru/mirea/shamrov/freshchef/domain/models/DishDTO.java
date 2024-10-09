@@ -1,12 +1,12 @@
 package ru.mirea.shamrov.freshchef.domain.models;
 
-public class Dish {
+public class DishDTO {
 
 	private Integer id;
 	private String title;
 	private Double price;
 
-	public Dish(Integer id, String title, Double price) {
+	public DishDTO(Integer id, String title, Double price) {
 		this.id = id;
 		this.title = title;
 		this.price = price;
@@ -20,8 +20,20 @@ public class Dish {
 		return title;
 	}
 
+	public Double getPrice() {
+		return price;
+	}
+
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
 	}
 
 	@Override

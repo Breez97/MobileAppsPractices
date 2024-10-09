@@ -11,9 +11,13 @@ import java.util.List;
 
 import ru.mirea.shamrov.freshchef.data.repository.DishRepositoryImpl;
 import ru.mirea.shamrov.freshchef.data.repository.UserRepositoryImpl;
+import ru.mirea.shamrov.freshchef.data.storage.DishStorage;
+import ru.mirea.shamrov.freshchef.data.storage.UserStorage;
+import ru.mirea.shamrov.freshchef.data.storage.internalstorage.InternalDishStorage;
+import ru.mirea.shamrov.freshchef.data.storage.internalstorage.InternalUserStorage;
 import ru.mirea.shamrov.freshchef.databinding.ActivityMainBinding;
-import ru.mirea.shamrov.freshchef.domain.models.Dish;
-import ru.mirea.shamrov.freshchef.domain.models.User;
+import ru.mirea.shamrov.freshchef.domain.models.DishDTO;
+import ru.mirea.shamrov.freshchef.domain.models.UserDTO;
 import ru.mirea.shamrov.freshchef.domain.repository.DishRepository;
 import ru.mirea.shamrov.freshchef.domain.repository.UserRepository;
 import ru.mirea.shamrov.freshchef.domain.usecases.AddNewDishUseCase;
@@ -66,17 +70,19 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	private void initRepository() {
-		dishRepository = new DishRepositoryImpl();
-		userRepository = new UserRepositoryImpl();
+		DishStorage dishStorage = new InternalDishStorage();
+		dishRepository = new DishRepositoryImpl(dishStorage);
+		UserStorage userStorage = new InternalUserStorage();
+		userRepository = new UserRepositoryImpl(userStorage);
 	}
 
 	private void buttonsFunctions() {
 		buttonGetAllDishes.setOnClickListener(view -> {
-			List<Dish> resultAllDishes = new GetAllDishesUseCase(dishRepository).execute();
+			List<DishDTO> resultAllDishes = new GetAllDishesUseCase(dishRepository).execute();
 			StringBuilder resultString = new StringBuilder();
 			if (!resultAllDishes.isEmpty()) {
 				resultString.append("List of All Dishes:\n");
-				for (Dish currentDish : resultAllDishes) {
+				for (DishDTO currentDish : resultAllDishes) {
 					resultString.append("-------------------------------------------------------\n")
 							.append(currentDish.toString())
 							.append("\n");
@@ -88,12 +94,12 @@ public class MainActivity extends AppCompatActivity {
 		});
 
 		buttonFindDishByTitle.setOnClickListener(view -> {
-			List<Dish> foundDishes = new GetDishesByTitleUseCase(dishRepository)
+			List<DishDTO> foundDishes = new GetDishesByTitleUseCase(dishRepository)
 					.execute(editTextFindDishByTitle.getText().toString());
 			StringBuilder resultString = new StringBuilder();
 			if (!foundDishes.isEmpty()) {
 				resultString.append("List of Found Dishes:\n");
-				for (Dish currentDish : foundDishes) {
+				for (DishDTO currentDish : foundDishes) {
 					resultString.append("-------------------------------------------------------\n")
 							.append(currentDish.toString())
 							.append("\n\n");
@@ -109,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
 			try {
 				Double price = Double.parseDouble(priceText);
 				boolean resultAdd = new AddNewDishUseCase(dishRepository)
-						.execute(new Dish(0, editTextAddTitle.getText().toString(), price));
+						.execute(new DishDTO(0, editTextAddTitle.getText().toString(), price));
 				if (resultAdd) {
 					textViewInfoText.setText("Dish added successfully");
 				} else {
@@ -121,11 +127,11 @@ public class MainActivity extends AppCompatActivity {
 		});
 
 		buttonGetAllUsers.setOnClickListener(view -> {
-			List<User> resultAllUsers = new GetAllUsersUseCase(userRepository).execute();
+			List<UserDTO> resultAllUsers = new GetAllUsersUseCase(userRepository).execute();
 			StringBuilder resultString = new StringBuilder();
 			if (!resultAllUsers.isEmpty()) {
 				resultString.append("List of All Users:\n");
-				for (User currentUser : resultAllUsers) {
+				for (UserDTO currentUser : resultAllUsers) {
 					resultString.append("-------------------------------------------------------\n")
 							.append(currentUser.toString())
 							.append("\n");
@@ -146,10 +152,10 @@ public class MainActivity extends AppCompatActivity {
 				if (idsFavouriteDishes.isEmpty()) {
 					resultString.append("User didn't add any dish to his favorite");
 				} else {
-					List<Dish> resultFavoriteDishes = new GetDishesByIdUseCase(dishRepository)
+					List<DishDTO> resultFavoriteDishes = new GetDishesByIdUseCase(dishRepository)
 							.execute(idsFavouriteDishes);
 					resultString.append("List of Favorite Dishes:\n");
-					for (Dish currentDish : resultFavoriteDishes) {
+					for (DishDTO currentDish : resultFavoriteDishes) {
 						resultString.append("-------------------------------------------------------\n")
 								.append(currentDish.toString())
 								.append("\n\n");

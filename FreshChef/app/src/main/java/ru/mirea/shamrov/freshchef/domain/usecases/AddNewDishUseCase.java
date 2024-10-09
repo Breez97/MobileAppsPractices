@@ -1,6 +1,6 @@
 package ru.mirea.shamrov.freshchef.domain.usecases;
 
-import ru.mirea.shamrov.freshchef.domain.models.Dish;
+import ru.mirea.shamrov.freshchef.domain.models.DishDTO;
 import ru.mirea.shamrov.freshchef.domain.repository.DishRepository;
 
 public class AddNewDishUseCase {
@@ -11,7 +11,7 @@ public class AddNewDishUseCase {
 		this.dishRepository = dishRepository;
 	}
 
-	public boolean execute(Dish dish) {
+	public boolean execute(DishDTO dish) {
 		return dishRepository.addNewDish(dish);
 	}
 
