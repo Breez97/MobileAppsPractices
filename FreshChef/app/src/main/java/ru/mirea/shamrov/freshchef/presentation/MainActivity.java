@@ -9,23 +9,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
 
-import ru.mirea.shamrov.freshchef.data.repository.DishRepositoryImpl;
-import ru.mirea.shamrov.freshchef.data.repository.UserRepositoryImpl;
-import ru.mirea.shamrov.freshchef.data.storage.DishStorage;
-import ru.mirea.shamrov.freshchef.data.storage.UserStorage;
-import ru.mirea.shamrov.freshchef.data.storage.internalstorage.InternalDishStorage;
-import ru.mirea.shamrov.freshchef.data.storage.internalstorage.InternalUserStorage;
+import ru.mirea.shamrov.data.repository.DishRepositoryImpl;
+import ru.mirea.shamrov.data.repository.UserRepositoryImpl;
+import ru.mirea.shamrov.data.storage.DishStorage;
+import ru.mirea.shamrov.data.storage.UserStorage;
+import ru.mirea.shamrov.data.storage.internalstorage.InternalDishStorage;
+import ru.mirea.shamrov.data.storage.internalstorage.InternalUserStorage;
+import ru.mirea.shamrov.domain.models.DishDTO;
+import ru.mirea.shamrov.domain.models.UserDTO;
+import ru.mirea.shamrov.domain.repository.DishRepository;
+import ru.mirea.shamrov.domain.repository.UserRepository;
+import ru.mirea.shamrov.domain.usecases.AddNewDishUseCase;
+import ru.mirea.shamrov.domain.usecases.GetAllDishesUseCase;
+import ru.mirea.shamrov.domain.usecases.GetAllUsersUseCase;
+import ru.mirea.shamrov.domain.usecases.GetDishesByIdUseCase;
+import ru.mirea.shamrov.domain.usecases.GetDishesByTitleUseCase;
+import ru.mirea.shamrov.domain.usecases.GetUserFavoriteDishesUseCase;
 import ru.mirea.shamrov.freshchef.databinding.ActivityMainBinding;
-import ru.mirea.shamrov.freshchef.domain.models.DishDTO;
-import ru.mirea.shamrov.freshchef.domain.models.UserDTO;
-import ru.mirea.shamrov.freshchef.domain.repository.DishRepository;
-import ru.mirea.shamrov.freshchef.domain.repository.UserRepository;
-import ru.mirea.shamrov.freshchef.domain.usecases.AddNewDishUseCase;
-import ru.mirea.shamrov.freshchef.domain.usecases.GetAllDishesUseCase;
-import ru.mirea.shamrov.freshchef.domain.usecases.GetAllUsersUseCase;
-import ru.mirea.shamrov.freshchef.domain.usecases.GetDishesByIdUseCase;
-import ru.mirea.shamrov.freshchef.domain.usecases.GetDishesByTitleUseCase;
-import ru.mirea.shamrov.freshchef.domain.usecases.GetUserFavoriteDishesUseCase;
 
 public class MainActivity extends AppCompatActivity {
 

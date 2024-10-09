@@ -1,19 +1,16 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
 }
 
 android {
-    namespace 'ru.mirea.shamrov.freshchef'
+    namespace 'ru.mirea.shamrov.data'
     compileSdk 34
 
     defaultConfig {
-        applicationId "ru.mirea.shamrov.freshchef"
         minSdk 26
-        targetSdk 34
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -26,20 +23,12 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    buildFeatures {
-        viewBinding true
-    }
 }
 
 dependencies {
 
     implementation libs.appcompat
-    implementation libs.material
-    implementation libs.activity
-    implementation libs.constraintlayout
-    implementation project(':data')
     implementation project(':domain')
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
-    androidTestImplementation libs.espresso.core
 }
