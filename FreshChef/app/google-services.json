@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "457347253848",
+    "project_id": "fresh-chef-project",
+    "storage_bucket": "fresh-chef-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:457347253848:android:49d928e3c9111a6ab52c2d",
+        "android_client_info": {
+          "package_name": "ru.mirea.shamrov.freshchef"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJvrvUQUIFtqm25yUjg7HD2jt4HxiSJl4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

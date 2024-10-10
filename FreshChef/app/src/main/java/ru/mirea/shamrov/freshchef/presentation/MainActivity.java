@@ -61,11 +61,11 @@ public class MainActivity extends AppCompatActivity {
 		editTextFindDishByTitle = binding.editTextFindDishByTitle;
 		editTextAddTitle = binding.editTextAddTitle;
 		editTextAddPrice = binding.editTextAddPrice;
+		editTextFindUsersFavoriteDishes = binding.editTextFindUsersFavoriteDishes;
 		buttonGetAllDishes = binding.buttonGetAllDishes;
 		buttonFindDishByTitle = binding.buttonFindDishByTitle;
 		buttonAddNewDish = binding.buttonAddNewDish;
 		buttonGetAllUsers = binding.buttonGetAllUsers;
-		editTextFindUsersFavoriteDishes = binding.editTextFindUsersFavoriteDishes;
 		buttonFindUserFavoriteDishes = binding.buttonFindUserFavoriteDishes;
 	}
 

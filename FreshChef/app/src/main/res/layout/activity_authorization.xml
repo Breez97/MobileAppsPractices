@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:backgroundTint="#00FFFFFF"
+    tools:context=".presentation.AuthorizationActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="clip_horizontal"
+        android:layout_weight="0.25"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/mainLayout"
+            android:layout_width="261dp"
+            android:layout_height="290dp"
+            android:background="@drawable/border"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="26dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/logo" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textLoginButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Вход"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="@color/main_green" />
+
+                <TextView
+                    android:id="@+id/textRegisterButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Регистрация"
+                    android:textAlignment="center"
+                    android:textColor="#000000" />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/editTextName"
+                android:layout_width="match_parent"
+                android:layout_height="29dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Имя Фамилия"
+                android:inputType="textEmailAddress"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="match_parent"
+                android:layout_height="29dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Email"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Пароль"
+                android:inputType="textPassword" />
+
+            <Button
+                android:id="@+id/buttonLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Войти"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/buttonRegistration"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_weight="1"
+                android:text="Зарегистрироваться"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
