@@ -1,4 +1,4 @@
-package ru.mirea.shamrov.domain.usecases;
+package ru.mirea.shamrov.domain.usecases.authentication;
 
 import ru.mirea.shamrov.domain.repository.AuthCallback;
 import ru.mirea.shamrov.domain.repository.AuthRepository;

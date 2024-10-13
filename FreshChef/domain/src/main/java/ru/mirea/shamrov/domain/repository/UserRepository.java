@@ -6,7 +6,7 @@ import ru.mirea.shamrov.domain.models.UserDTO;
 
 public interface UserRepository {
 
-	List<UserDTO> getAllUsers();
-	List<Integer> getUserFavoriteDishes(String name);
+	boolean saveNewUser(UserDTO userDTO);
+	UserDTO getCurrentUser();
 
 }

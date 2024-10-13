@@ -1,9 +1,5 @@
 package ru.mirea.shamrov.data.repository;
 
-import java.time.LocalDate;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import ru.mirea.shamrov.data.storage.UserStorage;
 import ru.mirea.shamrov.data.storage.models.User;
 import ru.mirea.shamrov.domain.models.UserDTO;
@@ -18,24 +14,21 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	@Override
-	public List<UserDTO> getAllUsers() {
-		List<User> resultUsers = userStorage.getAllUsers();
-		return resultUsers.stream()
-				.map(user -> mapToUserDTO(user))
-				.collect(Collectors.toList());
+	public boolean saveNewUser(UserDTO userDTO) {
+		return userStorage.saveNewUser(mapToUser(userDTO));
 	}
 
 	@Override
-	public List<Integer> getUserFavoriteDishes(String name) {
-		return userStorage.getUserFavoriteDishes(name);
+	public UserDTO getCurrentUser() {
+		return maptoUserDTO(userStorage.getCurrentUser());
 	}
 
 	private User mapToUser(UserDTO userDTO) {
-		return new User(userDTO.getId(), userDTO.getName(), userDTO.getFavoriteDishes(), LocalDate.now());
+		return new User(userDTO.getId(), userDTO.getName(), userDTO.getEmail(), userDTO.getPassword(), userDTO.getFavoriteDishes());
 	}
 
-	private UserDTO mapToUserDTO(User user) {
-		return new UserDTO(user.getId(), user.getName(), user.getFavoriteDishes());
+	private UserDTO maptoUserDTO(User user) {
+		return new UserDTO(user.getId(), user.getName(), user.getEmail(), user.getPassword(), user.getFavoriteDishes());
 	}
 
 }

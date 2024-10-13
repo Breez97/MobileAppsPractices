@@ -1,20 +1,21 @@
 package ru.mirea.shamrov.data.storage.models;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public class User {
 
 	private Integer id;
 	private String name;
+	private String email;
+	private String password;
 	private List<Integer> favoriteDishes;
-	private LocalDate localDate;
 
-	public User(Integer id, String name, List<Integer> favoriteDishes, LocalDate localDate) {
+	public User(Integer id, String name, String email, String password, List<Integer> favoriteDishes) {
 		this.id = id;
 		this.name = name;
+		this.email = email;
+		this.password = password;
 		this.favoriteDishes = favoriteDishes;
-		this.localDate = localDate;
 	}
 
 	public Integer getId() {
@@ -25,12 +26,16 @@ public class User {
 		return name;
 	}
 
-	public List<Integer> getFavoriteDishes() {
-		return favoriteDishes;
+	public String getEmail() {
+		return email;
 	}
 
-	public LocalDate getLocalDate() {
-		return localDate;
+	public String getPassword() {
+		return password;
+	}
+
+	public List<Integer> getFavoriteDishes() {
+		return favoriteDishes;
 	}
 
 	public void setId(Integer id) {
@@ -41,12 +46,16 @@ public class User {
 		this.name = name;
 	}
 
-	public void setFavoriteDishes(List<Integer> favoriteDishes) {
-		this.favoriteDishes = favoriteDishes;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public void setLocalDate(LocalDate localDate) {
-		this.localDate = localDate;
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setFavoriteDishes(List<Integer> favoriteDishes) {
+		this.favoriteDishes = favoriteDishes;
 	}
 
 }
