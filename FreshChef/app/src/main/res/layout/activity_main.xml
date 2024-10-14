@@ -128,12 +128,6 @@
                     android:layout_margin="5dp"
                     android:text="Find User Favorite Dishes" />
 
-                <Button
-                    android:id="@+id/buttonLogout"
-                    android:layout_width="159dp"
-                    android:layout_height="wrap_content"
-                    android:text="Logout" />
-
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

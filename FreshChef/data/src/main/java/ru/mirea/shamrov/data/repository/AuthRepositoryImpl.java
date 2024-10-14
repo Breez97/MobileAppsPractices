@@ -1,8 +1,8 @@
 package ru.mirea.shamrov.data.repository;
 
-import ru.mirea.shamrov.data.firebase.AuthCallbackFirebase;
+import ru.mirea.shamrov.data.firebase.utils.AuthCallbackFirebase;
 import ru.mirea.shamrov.data.firebase.AuthStorage;
-import ru.mirea.shamrov.domain.repository.AuthCallback;
+import ru.mirea.shamrov.domain.utils.AuthCallback;
 import ru.mirea.shamrov.domain.repository.AuthRepository;
 
 public class AuthRepositoryImpl implements AuthRepository {

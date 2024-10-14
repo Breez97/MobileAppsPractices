@@ -3,9 +3,8 @@ package ru.mirea.shamrov.data.firebase.authstorage;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import ru.mirea.shamrov.data.firebase.AuthCallbackFirebase;
+import ru.mirea.shamrov.data.firebase.utils.AuthCallbackFirebase;
 import ru.mirea.shamrov.data.firebase.AuthStorage;
-import ru.mirea.shamrov.domain.repository.AuthCallback;
 
 public class FirebaseAuthStorage implements AuthStorage {
 

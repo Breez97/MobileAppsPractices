@@ -1,6 +1,6 @@
 package ru.mirea.shamrov.data.firebase;
 
-import ru.mirea.shamrov.domain.repository.AuthCallback;
+import ru.mirea.shamrov.data.firebase.utils.AuthCallbackFirebase;
 
 public interface AuthStorage {
 

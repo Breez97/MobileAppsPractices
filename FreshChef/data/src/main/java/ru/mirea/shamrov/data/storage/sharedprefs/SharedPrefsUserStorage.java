@@ -17,7 +17,7 @@ public class SharedPrefsUserStorage implements UserStorage {
 	private static final String KEY_ID = "user_id";
 	private static final String KEY_NAME = "user_name";
 	private static final String KEY_EMAIL = "user_email";
-	private static final String KEY_PASSWORD = "user_email";
+	private static final String KEY_PASSWORD = "user_password";
 	private static final String KEY_FAVORITE_DISHES = "user_favorite_dishes";
 	private final SharedPreferences sharedPreferences;
 
@@ -36,6 +36,7 @@ public class SharedPrefsUserStorage implements UserStorage {
 				.map(String::valueOf)
 				.collect(Collectors.joining(" "));
 		editor.putString(KEY_FAVORITE_DISHES, favoriteDishes);
+		editor.apply();
 		return true;
 	}
 

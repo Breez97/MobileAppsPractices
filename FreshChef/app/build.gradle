@@ -39,6 +39,8 @@ dependencies {
     implementation libs.activity
     implementation libs.constraintlayout
     implementation libs.firebase.auth
+    implementation libs.androidx.room.gradle.plugin
+    implementation libs.androidx.room.common
     implementation project(':data')
     implementation project(':domain')
     testImplementation libs.junit

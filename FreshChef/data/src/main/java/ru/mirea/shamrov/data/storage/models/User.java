@@ -58,4 +58,12 @@ public class User {
 		this.favoriteDishes = favoriteDishes;
 	}
 
+	@Override
+	public String toString() {
+		return "id: " + id +
+				"\nName: " + name +
+				"\nEmail: " + email +
+				"\nPassword: " + password;
+	}
+
 }

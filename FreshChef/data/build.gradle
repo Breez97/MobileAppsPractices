@@ -30,7 +30,11 @@ dependencies {
 
     implementation libs.appcompat
     implementation libs.firebase.auth
+    implementation libs.androidx.room.gradle.plugin
     implementation project(':domain')
+    implementation libs.androidx.room.common
+    implementation libs.androidx.room.runtime
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
+    annotationProcessor libs.androidx.room.compiler
 }

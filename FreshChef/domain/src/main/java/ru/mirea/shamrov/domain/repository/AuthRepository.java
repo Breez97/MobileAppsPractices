@@ -1,5 +1,7 @@
 package ru.mirea.shamrov.domain.repository;
 
+import ru.mirea.shamrov.domain.utils.AuthCallback;
+
 public interface AuthRepository {
 
 	void login(String email, String password, AuthCallback callback);

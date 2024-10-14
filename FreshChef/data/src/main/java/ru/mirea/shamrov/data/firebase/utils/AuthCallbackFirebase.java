@@ -1,4 +1,4 @@
-package ru.mirea.shamrov.data.firebase;
+package ru.mirea.shamrov.data.firebase.utils;
 
 public interface AuthCallbackFirebase {
 

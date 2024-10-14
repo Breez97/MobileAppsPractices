@@ -1,6 +1,6 @@
 package ru.mirea.shamrov.domain.usecases.authentication;
 
-import ru.mirea.shamrov.domain.repository.AuthCallback;
+import ru.mirea.shamrov.domain.utils.AuthCallback;
 import ru.mirea.shamrov.domain.repository.AuthRepository;
 
 public class LoginUseCase {

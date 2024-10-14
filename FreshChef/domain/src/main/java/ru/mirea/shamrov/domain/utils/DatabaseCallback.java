@@ -1,0 +1,8 @@
+package ru.mirea.shamrov.domain.utils;
+
+public interface DatabaseCallback<T> {
+
+	void onSuccess(T result);
+	void onError(Exception e);
+
+}

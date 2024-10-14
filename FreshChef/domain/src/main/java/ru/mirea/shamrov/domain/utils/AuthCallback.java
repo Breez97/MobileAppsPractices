@@ -1,4 +1,4 @@
-package ru.mirea.shamrov.domain.repository;
+package ru.mirea.shamrov.domain.utils;
 
 public interface AuthCallback {
 

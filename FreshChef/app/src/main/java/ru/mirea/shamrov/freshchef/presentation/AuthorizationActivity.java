@@ -21,7 +21,7 @@ import ru.mirea.shamrov.data.repository.UserRepositoryImpl;
 import ru.mirea.shamrov.data.storage.UserStorage;
 import ru.mirea.shamrov.data.storage.sharedprefs.SharedPrefsUserStorage;
 import ru.mirea.shamrov.domain.models.UserDTO;
-import ru.mirea.shamrov.domain.repository.AuthCallback;
+import ru.mirea.shamrov.domain.utils.AuthCallback;
 import ru.mirea.shamrov.domain.repository.UserRepository;
 import ru.mirea.shamrov.domain.usecases.users.GetCurrentUserUseCase;
 import ru.mirea.shamrov.domain.usecases.authentication.IsUserAuthorizedUseCase;
@@ -93,7 +93,7 @@ public class AuthorizationActivity extends AppCompatActivity {
 	private void checkAuthorization() {
 		boolean isAuthorized = isUserAuthorizedUseCase.execute();
 		if (isAuthorized) {
-			startActivity(new Intent(AuthorizationActivity.this, MainActivity.class));
+			startActivity(new Intent(AuthorizationActivity.this, AccountActivity.class));
 		}
 	}
 
@@ -120,11 +120,12 @@ public class AuthorizationActivity extends AppCompatActivity {
 			@Override
 			public void onSuccess() {
 				Toast.makeText(AuthorizationActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
-				startActivity(new Intent(AuthorizationActivity.this, MainActivity.class));
+				startActivity(new Intent(AuthorizationActivity.this, AccountActivity.class));
 			}
 			@Override
 			public void onError(String errorMessage) {
 				Toast.makeText(AuthorizationActivity.this, "Login failed: " + errorMessage, Toast.LENGTH_SHORT).show();
+				editTextPassword.setText("");
 			}
 		});
 	}
@@ -135,11 +136,13 @@ public class AuthorizationActivity extends AppCompatActivity {
 			public void onSuccess() {
 				Toast.makeText(AuthorizationActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
 				saveNewUserUseCase.execute(new UserDTO(1, name, email, password, new ArrayList<>()));
-				startActivity(new Intent(AuthorizationActivity.this, MainActivity.class));
+				startActivity(new Intent(AuthorizationActivity.this, AccountActivity.class));
 			}
 			@Override
 			public void onError(String errorMessage) {
 				Toast.makeText(AuthorizationActivity.this, "Registration failed: " + errorMessage, Toast.LENGTH_SHORT).show();
+				editTextEmail.setText("");
+				editTextPassword.setText("");
 			}
 		});
 	}

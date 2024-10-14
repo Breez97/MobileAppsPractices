@@ -61,7 +61,9 @@ public class UserDTO {
 	@Override
 	public String toString() {
 		return "id: " + id +
-				"\nName: " + name;
+				"\nName: " + name +
+				"\nEmail: " + email +
+				"\nPassword: " + password;
 	}
 
 }

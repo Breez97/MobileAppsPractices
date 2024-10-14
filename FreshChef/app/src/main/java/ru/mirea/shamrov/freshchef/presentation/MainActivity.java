@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
 	private EditText editTextFindUsersFavoriteDishes;
 	private Button buttonGetAllUsers;
 	private Button buttonFindUserFavoriteDishes;
-	private Button buttonLogout;
 
 	private LogoutUseCase logoutUseCase;
 
@@ -71,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
 		buttonAddNewDish = binding.buttonAddNewDish;
 		buttonGetAllUsers = binding.buttonGetAllUsers;
 		buttonFindUserFavoriteDishes = binding.buttonFindUserFavoriteDishes;
-		buttonLogout = binding.buttonLogout;
 
 	}
 
@@ -136,11 +134,6 @@ public class MainActivity extends AppCompatActivity {
 			} catch (NumberFormatException e) {
 				textViewInfoText.setText("Incorrect price input");
 			}
-		});
-
-		buttonLogout.setOnClickListener(view -> {
-			logoutUseCase.execute();
-			startActivity(new Intent(MainActivity.this, AuthorizationActivity.class));
 		});
 
 //		buttonGetAllUsers.setOnClickListener(view -> {

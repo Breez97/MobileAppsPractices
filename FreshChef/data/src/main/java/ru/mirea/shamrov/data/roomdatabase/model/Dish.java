@@ -1,10 +1,8 @@
-package ru.mirea.shamrov.data.storage.models;
+package ru.mirea.shamrov.data.roomdatabase.model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
-import java.time.LocalDate;
 
 @Entity(tableName = "dishes")
 public class Dish {
@@ -19,14 +17,9 @@ public class Dish {
 	@ColumnInfo(name = "price")
 	private Double price;
 
-	@ColumnInfo(name = "localDate")
-	private LocalDate localDate;
-
-	public Dish(Integer id, String title, Double price, LocalDate localDate) {
-		this.id = id;
+	public Dish(String title, Double price) {
 		this.title = title;
 		this.price = price;
-		this.localDate = localDate;
 	}
 
 	public Integer getId() {
@@ -41,10 +34,6 @@ public class Dish {
 		return price;
 	}
 
-	public LocalDate getLocalDate() {
-		return localDate;
-	}
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -55,10 +44,6 @@ public class Dish {
 
 	public void setPrice(Double price) {
 		this.price = price;
-	}
-
-	public void setLocalDate(LocalDate localDate) {
-		this.localDate = localDate;
 	}
 
 }

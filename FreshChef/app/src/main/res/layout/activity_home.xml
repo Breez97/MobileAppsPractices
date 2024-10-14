@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.HomeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="clip_horizontal"
+        android:layout_weight="0.25"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textViewAllDishes"
+            android:layout_width="248dp"
+            android:layout_height="wrap_content" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <LinearLayout
+            android:id="@+id/mainLayout"
+            android:layout_width="261dp"
+            android:layout_height="293dp"
+            android:background="@drawable/border"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/editTextDishTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Название"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/editTextDishPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Цена"
+                android:inputType="number" />
+
+            <Button
+                android:id="@+id/buttonAddNewDish"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:text="Добавить"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/buttonDeleteDish"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:text="Удалить"
+                android:visibility="visible" />
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <Button
+            android:id="@+id/buttonGetAllDishesDatabase"
+            android:layout_width="213dp"
+            android:layout_height="wrap_content"
+            android:text="Получить все блюда" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
