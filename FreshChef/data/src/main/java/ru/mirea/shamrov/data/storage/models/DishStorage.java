@@ -1,28 +1,15 @@
 package ru.mirea.shamrov.data.storage.models;
 
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
 import java.time.LocalDate;
 
-@Entity(tableName = "dishes")
-public class Dish {
+public class DishStorage {
 
-	@ColumnInfo(name = "id")
-	@PrimaryKey(autoGenerate = true)
 	private Integer id;
-
-	@ColumnInfo(name = "title")
 	private String title;
-
-	@ColumnInfo(name = "price")
 	private Double price;
-
-	@ColumnInfo(name = "localDate")
 	private LocalDate localDate;
 
-	public Dish(Integer id, String title, Double price, LocalDate localDate) {
+	public DishStorage(Integer id, String title, Double price, LocalDate localDate) {
 		this.id = id;
 		this.title = title;
 		this.price = price;

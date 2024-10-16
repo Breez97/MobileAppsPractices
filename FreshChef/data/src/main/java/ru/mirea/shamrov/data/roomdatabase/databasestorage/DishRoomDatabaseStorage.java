@@ -13,14 +13,13 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import ru.mirea.shamrov.data.roomdatabase.DishDatabase;
 import ru.mirea.shamrov.data.roomdatabase.DishDatabaseStorage;
-import ru.mirea.shamrov.data.roomdatabase.model.Dish;
+import ru.mirea.shamrov.data.roomdatabase.model.DishDatabase;
 import ru.mirea.shamrov.data.roomdatabase.utils.RoomDatabaseCallback;
 
 public class DishRoomDatabaseStorage implements DishDatabaseStorage {
 
-	private DishDatabase dishDatabase;
+	private ru.mirea.shamrov.data.roomdatabase.DishDatabase dishDatabase;
 	private Context context;
 	private final ExecutorService databaseExecutor = Executors.newSingleThreadExecutor();
 	private final Handler mainThreadHandler = new Handler(Looper.getMainLooper());
@@ -43,13 +42,13 @@ public class DishRoomDatabaseStorage implements DishDatabaseStorage {
 			}
 		};
 
-		dishDatabase = Room.databaseBuilder(context, DishDatabase.class, "DishDB")
+		dishDatabase = Room.databaseBuilder(context, ru.mirea.shamrov.data.roomdatabase.DishDatabase.class, "DishDB")
 				.addCallback(customCallback)
 				.build();
 	}
 
 	@Override
-	public void addNewDish(Dish dish) {
+	public void addNewDish(DishDatabase dish) {
 		databaseExecutor.execute(() -> dishDatabase.getDishDAO().addDish(dish));
 	}
 
@@ -59,9 +58,9 @@ public class DishRoomDatabaseStorage implements DishDatabaseStorage {
 	}
 
 	@Override
-	public void getAllDishes(RoomDatabaseCallback<List<Dish>> callback) {
+	public void getAllDishes(RoomDatabaseCallback<List<DishDatabase>> callback) {
 		databaseExecutor.execute(() -> {
-			List<Dish> dishes = dishDatabase.getDishDAO().getAllDishes();
+			List<DishDatabase> dishes = dishDatabase.getDishDAO().getAllDishes();
 			mainThreadHandler.post(() -> callback.onSuccess(dishes));
 		});
 	}

@@ -2,13 +2,11 @@ package ru.mirea.shamrov.data.storage;
 
 import java.util.List;
 
-import ru.mirea.shamrov.data.storage.models.Dish;
-
 public interface DishStorage {
 
-	boolean addNewDish(Dish dish);
-	List<Dish> getDishesByTitle(String title);
-	List<Dish> getDishesById(List<Integer> ids);
-	List<Dish> getAllDishes();
+	boolean addNewDish(ru.mirea.shamrov.data.storage.models.DishStorage dish);
+	List<ru.mirea.shamrov.data.storage.models.DishStorage> getDishesByTitle(String title);
+	List<ru.mirea.shamrov.data.storage.models.DishStorage> getDishesById(List<Integer> ids);
+	List<ru.mirea.shamrov.data.storage.models.DishStorage> getAllDishes();
 
 }

@@ -9,11 +9,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
 
+import ru.mirea.shamrov.data.api.ApiNetwork;
+import ru.mirea.shamrov.data.api.apinetwork.ApiNetworkSignal;
 import ru.mirea.shamrov.data.repository.DishDatabaseRepositoryImpl;
 import ru.mirea.shamrov.data.roomdatabase.DishDatabaseStorage;
 import ru.mirea.shamrov.data.roomdatabase.databasestorage.DishRoomDatabaseStorage;
 import ru.mirea.shamrov.domain.models.DishDatabaseDTO;
 import ru.mirea.shamrov.domain.repository.DishDatabaseRepository;
+import ru.mirea.shamrov.domain.usecases.api.GetDishFromApiUseCase;
 import ru.mirea.shamrov.domain.usecases.roomdatabase.AddNewDishDatabaseUseCase;
 import ru.mirea.shamrov.domain.usecases.roomdatabase.DeleteDishDatabaseUseCase;
 import ru.mirea.shamrov.domain.usecases.roomdatabase.GetAllDishesDatabaseUseCase;
@@ -30,10 +33,12 @@ public class HomeActivity extends AppCompatActivity {
 	private Button buttonAddNewDish;
 	private Button buttonDeleteDish;
 	private Button buttonGetAllDishesDatabase;
+	private Button buttonGetDishFromApi;
 
 	private AddNewDishDatabaseUseCase addNewDishDatabaseUseCase;
 	private DeleteDishDatabaseUseCase deleteDishDatabaseUseCase;
 	private GetAllDishesDatabaseUseCase getAllDishesDatabaseUseCase;
+	private GetDishFromApiUseCase getDishFromApiUseCase;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +51,13 @@ public class HomeActivity extends AppCompatActivity {
 	}
 
 	private void initUseCases() {
+		ApiNetwork apiNetwork = new ApiNetworkSignal();
 		DishDatabaseStorage dishDatabaseStorage = new DishRoomDatabaseStorage(this);
-		DishDatabaseRepository dishDatabaseRepository = new DishDatabaseRepositoryImpl(dishDatabaseStorage);
+		DishDatabaseRepository dishDatabaseRepository = new DishDatabaseRepositoryImpl(dishDatabaseStorage, apiNetwork);
 		addNewDishDatabaseUseCase = new AddNewDishDatabaseUseCase(dishDatabaseRepository);
 		deleteDishDatabaseUseCase = new DeleteDishDatabaseUseCase(dishDatabaseRepository);
 		getAllDishesDatabaseUseCase = new GetAllDishesDatabaseUseCase(dishDatabaseRepository);
+		getDishFromApiUseCase = new GetDishFromApiUseCase(dishDatabaseRepository);
 	}
 
 	private void initWidgets() {
@@ -60,6 +67,7 @@ public class HomeActivity extends AppCompatActivity {
 		buttonAddNewDish = binding.buttonAddNewDish;
 		buttonDeleteDish = binding.buttonDeleteDish;
 		buttonGetAllDishesDatabase = binding.buttonGetAllDishesDatabase;
+		buttonGetDishFromApi = binding.buttonGetDishFromApi;
 	}
 
 	private void buttonsFunctions() {
@@ -73,6 +81,7 @@ public class HomeActivity extends AppCompatActivity {
 		buttonDeleteDish.setOnClickListener(view -> {
 			String title = editTextDishTitle.getText().toString();
 			if (!title.isEmpty()) {
+				textViewAllDishes.setText("Dish with title " + title + " deleted");
 				deleteDishDatabaseUseCase.execute(title);
 			}
 		});
@@ -99,6 +108,12 @@ public class HomeActivity extends AppCompatActivity {
 					e.printStackTrace();
 				}
 			});
+		});
+
+		buttonGetDishFromApi.setOnClickListener(view -> {
+			DishDatabaseDTO dish = getDishFromApiUseCase.execute();
+			editTextDishTitle.setText(dish.getTitle());
+			editTextDishPrice.setText(dish.getPrice().toString());
 		});
 
 	}

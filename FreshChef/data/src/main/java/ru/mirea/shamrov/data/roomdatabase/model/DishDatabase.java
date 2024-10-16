@@ -5,7 +5,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "dishes")
-public class Dish {
+public class DishDatabase {
 
 	@ColumnInfo(name = "id")
 	@PrimaryKey(autoGenerate = true)
@@ -17,7 +17,7 @@ public class Dish {
 	@ColumnInfo(name = "price")
 	private Double price;
 
-	public Dish(String title, Double price) {
+	public DishDatabase(String title, Double price) {
 		this.title = title;
 		this.price = price;
 	}

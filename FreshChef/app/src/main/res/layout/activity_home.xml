@@ -81,5 +81,15 @@
             android:layout_height="wrap_content"
             android:text="Получить все блюда" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <Button
+            android:id="@+id/buttonGetDishFromApi"
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:text="Получить блюдо из API" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

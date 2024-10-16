@@ -7,25 +7,25 @@ import androidx.room.Update;
 
 import java.util.List;
 
-import ru.mirea.shamrov.data.roomdatabase.model.Dish;
+import ru.mirea.shamrov.data.roomdatabase.model.DishDatabase;
 
 @Dao
 public interface DishDAO {
 
 	@Insert
-	void addDish(Dish dish);
+	void addDish(DishDatabase dish);
 
 	@Update
-	void updateDish(Dish dish);
+	void updateDish(DishDatabase dish);
 
 	@Query("delete from dishes where title==:title")
 	void deleteDish(String title);
 
 	@Query("select * from dishes")
-	List<Dish> getAllDishes();
+	List<DishDatabase> getAllDishes();
 
 	@Query("select * from dishes where id==:dishId")
-	Dish getDish(Integer dishId);
+	DishDatabase getDish(Integer dishId);
 
 	@Query("delete from dishes")
 	void clearTable();

@@ -5,21 +5,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import ru.mirea.shamrov.data.storage.DishStorage;
-import ru.mirea.shamrov.data.storage.models.Dish;
+import ru.mirea.shamrov.data.storage.models.DishStorage;
 
-public class InternalDishStorage implements DishStorage {
+public class InternalDishStorage implements ru.mirea.shamrov.data.storage.DishStorage {
 
-	private final List<Dish> DISHES = new ArrayList<>(
+	private final List<DishStorage> DISHES = new ArrayList<>(
 			List.of(
-					new Dish(1, "Grilled Chicken Salad", 9.99, LocalDate.now()),
-					new Dish(2, "Avocado Toast with Egg", 6.50, LocalDate.now())
+					new DishStorage(1, "Grilled Chicken Salad", 9.99, LocalDate.now()),
+					new DishStorage(2, "Avocado Toast with Egg", 6.50, LocalDate.now())
 			)
 	);
 
 	@Override
-	public boolean addNewDish(Dish dish) {
-		for (Dish currentDish : DISHES) {
+	public boolean addNewDish(DishStorage dish) {
+		for (DishStorage currentDish : DISHES) {
 			if (currentDish.getTitle().equalsIgnoreCase(dish.getTitle())) {
 				return false;
 			}
@@ -29,7 +28,7 @@ public class InternalDishStorage implements DishStorage {
 	}
 
 	@Override
-	public List<Dish> getDishesByTitle(String title) {
+	public List<DishStorage> getDishesByTitle(String title) {
 		if (title.isEmpty()) {
 			return new ArrayList<>();
 		}
@@ -39,14 +38,14 @@ public class InternalDishStorage implements DishStorage {
 	}
 
 	@Override
-	public List<Dish> getDishesById(List<Integer> ids) {
+	public List<DishStorage> getDishesById(List<Integer> ids) {
 		return DISHES.stream()
 				.filter(dish -> ids.contains(dish.getId()))
 				.collect(Collectors.toList());
 	}
 
 	@Override
-	public List<Dish> getAllDishes() {
+	public List<DishStorage> getAllDishes() {
 		return DISHES;
 	}
 
