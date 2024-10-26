@@ -59,6 +59,7 @@
                 android:layout_height="20dp"
                 android:layout_weight="1"
                 android:text="Добавить"
+                android:backgroundTint="@color/buttons_green"
                 android:visibility="visible" />
 
             <Button
@@ -67,6 +68,7 @@
                 android:layout_height="20dp"
                 android:layout_weight="1"
                 android:text="Удалить"
+                android:backgroundTint="@color/buttons_green"
                 android:visibility="visible" />
 
         </LinearLayout>
@@ -79,7 +81,8 @@
             android:id="@+id/buttonGetAllDishesDatabase"
             android:layout_width="213dp"
             android:layout_height="wrap_content"
-            android:text="Получить все блюда" />
+            android:text="Получить все блюда"
+            android:backgroundTint="@color/buttons_green"/>
 
         <Space
             android:layout_width="match_parent"
@@ -89,7 +92,8 @@
             android:id="@+id/buttonGetDishFromApi"
             android:layout_width="215dp"
             android:layout_height="wrap_content"
-            android:text="Получить блюдо из API" />
+            android:text="Получить блюдо из API"
+            android:backgroundTint="@color/buttons_green"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

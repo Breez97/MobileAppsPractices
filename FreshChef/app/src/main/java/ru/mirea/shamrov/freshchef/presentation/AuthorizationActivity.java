@@ -104,15 +104,32 @@ public class AuthorizationActivity extends AppCompatActivity {
 		binding.buttonLogin.setOnClickListener(v -> {
 			String email = binding.editTextEmail.getText().toString();
 			String password = binding.editTextPassword.getText().toString();
-			loginFunction(email, password);
+			if (checkFields(email, password)) {
+				loginFunction(email, password);
+			}
 		});
 
 		binding.buttonRegistration.setOnClickListener(v -> {
 			String name = editTextName.getText().toString();
 			String email = editTextEmail.getText().toString();
 			String password = editTextPassword.getText().toString();
-			registerFunction(name, email, password);
+			if (name.isEmpty()) {
+				Toast.makeText(AuthorizationActivity.this, "Name can't be empty", Toast.LENGTH_SHORT).show();
+			} else if (checkFields(email, password)) {
+				registerFunction(name, email, password);
+			}
 		});
+	}
+
+	private boolean checkFields(String email, String password) {
+		if (email.isBlank()) {
+			Toast.makeText(AuthorizationActivity.this, "Email can't be empty", Toast.LENGTH_SHORT).show();
+			return false;
+		} else if (password.isBlank()) {
+			Toast.makeText(AuthorizationActivity.this, "Password can't be empty", Toast.LENGTH_SHORT).show();
+			return false;
+		}
+		return true;
 	}
 
 	private void loginFunction(String email, String password) {
