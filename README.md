@@ -17,7 +17,8 @@
 
 #### 7-й семестр
 - [Диаграммы для приложения](https://github.com/Breez97/MobileAppsPractices/tree/main/FreshChef_Diagrams)
+- [Прототип приложения (Figma)](https://www.figma.com/design/IEK7QbSNw1bIgS2D3yWOk5/Frech-Chef?node-id=0-1&t=jo07jzRCL1kBLln8-1)
 - 9-я практическая работа (**Зачтена**) : [Практическая 9](https://github.com/Breez97/MobileAppsPractices/tree/main/Lesson9) -> [Контрольное задание (FreshChef)](https://github.com/Breez97/MobileAppsPractices/tree/main/FreshChef)
-- 10-я практическая работа : [Практическая 10](https://github.com/Breez97/MobileAppsPractices/tree/main/Lesson10) -> [Контрольное задание (FreshChef)](https://github.com/Breez97/MobileAppsPractices/tree/main/FreshChef) (commit: c6946f6) (Прототип приложения: [Figma](https://www.figma.com/design/IEK7QbSNw1bIgS2D3yWOk5/Frech-Chef?node-id=0-1&t=jo07jzRCL1kBLln8-1))
-- 11-я практическая работа : [Практическая 11](https://github.com/Breez97/MobileAppsPractices/tree/main/Lesson11)
+- 10-я практическая работа (**Зачтена**) : [Практическая 10](https://github.com/Breez97/MobileAppsPractices/tree/main/Lesson10) -> [Контрольное задание (FreshChef)](https://github.com/Breez97/MobileAppsPractices/tree/main/FreshChef) (commit: c6946f6)
+- 11-я практическая работа : [Практическая 11](https://github.com/Breez97/MobileAppsPractices/tree/main/Lesson11) -> [Контрольное задание (FreshChef)](https://github.com/Breez97/MobileAppsPractices/tree/main/FreshChef) (commit: 293b762)
 ---
