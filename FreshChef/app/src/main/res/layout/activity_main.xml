@@ -10,126 +10,90 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_gravity="clip_horizontal"
+        android:layout_weight="0.25"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ScrollView
-            android:id="@+id/scrollView"
-            android:layout_width="match_parent"
-            android:layout_height="204dp"
-            android:layout_weight="1"
-            android:padding="30dp">
+        <TextView
+            android:id="@+id/textViewAllDishes"
+            android:layout_width="248dp"
+            android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/textViewInfoText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textSize="16sp" />
-        </ScrollView>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
 
         <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="409dp"
-            android:layout_height="502dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            android:id="@+id/mainLayout"
+            android:layout_width="261dp"
+            android:layout_height="293dp"
+            android:background="@drawable/border"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/layoutDishes"
+            <EditText
+                android:id="@+id/editTextDishTitle"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:paddingTop="25dp">
+                android:ems="10"
+                android:hint="Название"
+                android:inputType="text" />
 
-                <Button
-                    android:id="@+id/buttonGetAllDishes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:text="Get All Dishes" />
-
-                <EditText
-                    android:id="@+id/editTextFindDishByTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:layout_margin="5dp"
-                    android:ems="10"
-                    android:hint="Title to find"
-                    android:inputType="text" />
-
-                <Button
-                    android:id="@+id/buttonFindDishByTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:text="Get Dish By Title" />
-
-                <EditText
-                    android:id="@+id/editTextAddTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:layout_margin="5dp"
-                    android:ems="10"
-                    android:hint="Title to add"
-                    android:inputType="text" />
-
-                <EditText
-                    android:id="@+id/editTextAddPrice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:layout_margin="5dp"
-                    android:ems="10"
-                    android:hint="Price to add"
-                    android:inputType="number" />
-
-                <Button
-                    android:id="@+id/buttonAddNewDish"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:text="Add New Dish" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layoutUsers"
+            <EditText
+                android:id="@+id/editTextDishPrice"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:paddingTop="25dp">
+                android:ems="10"
+                android:hint="Цена"
+                android:inputType="number" />
 
-                <Button
-                    android:id="@+id/buttonGetAllUsers"
-                    android:layout_width="142dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:text="Get All Users" />
+            <Button
+                android:id="@+id/buttonAddNewDish"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:text="Добавить"
+                android:backgroundTint="@color/buttons_green"
+                android:visibility="visible" />
 
-                <EditText
-                    android:id="@+id/editTextFindUsersFavoriteDishes"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_margin="5dp"
-                    android:ems="10"
-                    android:hint="User to find favourite dishes"
-                    android:inputType="text" />
+            <Button
+                android:id="@+id/buttonDeleteDish"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:text="Удалить"
+                android:backgroundTint="@color/buttons_green"
+                android:visibility="visible" />
 
-                <Button
-                    android:id="@+id/buttonFindUserFavoriteDishes"
-                    android:layout_width="153dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:text="Find User Favorite Dishes" />
-
-            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <Button
+            android:id="@+id/buttonGetDishFromApi"
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:text="Получить блюдо из API"
+            android:backgroundTint="@color/buttons_green"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <Button
+            android:id="@+id/buttonGoToProfile"
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:text="Профиль"
+            android:backgroundTint="@color/buttons_green"/>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

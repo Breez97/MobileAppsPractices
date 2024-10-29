@@ -11,29 +11,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
-import java.util.ArrayList;
-
-import ru.mirea.shamrov.data.firebase.AuthStorage;
-import ru.mirea.shamrov.data.firebase.authstorage.FirebaseAuthStorage;
-import ru.mirea.shamrov.data.repository.AuthRepositoryImpl;
-import ru.mirea.shamrov.data.repository.UserRepositoryImpl;
-import ru.mirea.shamrov.data.storage.UserStorage;
-import ru.mirea.shamrov.data.storage.sharedprefs.SharedPrefsUserStorage;
-import ru.mirea.shamrov.domain.models.UserDTO;
-import ru.mirea.shamrov.domain.utils.AuthCallback;
-import ru.mirea.shamrov.domain.repository.UserRepository;
-import ru.mirea.shamrov.domain.usecases.users.GetCurrentUserUseCase;
-import ru.mirea.shamrov.domain.usecases.authentication.IsUserAuthorizedUseCase;
-import ru.mirea.shamrov.domain.usecases.authentication.LoginUseCase;
-import ru.mirea.shamrov.domain.usecases.authentication.RegisterUseCase;
-import ru.mirea.shamrov.domain.usecases.users.SaveNewUserUseCase;
 import ru.mirea.shamrov.freshchef.R;
 import ru.mirea.shamrov.freshchef.databinding.ActivityAuthorizationBinding;
+import ru.mirea.shamrov.freshchef.presentation.viewmodel.AuthorizationViewModel;
+import ru.mirea.shamrov.freshchef.presentation.viewmodel.AuthorizationViewModelFactory;
 
 public class AuthorizationActivity extends AppCompatActivity {
 
 	private ActivityAuthorizationBinding binding;
+	private AuthorizationViewModel authorizationViewModel;
 
 	private TextView textLoginButton;
 	private TextView textRegisterButton;
@@ -47,34 +35,16 @@ public class AuthorizationActivity extends AppCompatActivity {
 	private int greenColor;
 	private int blackColor;
 
-	private LoginUseCase loginUseCase;
-	private RegisterUseCase registerUseCase;
-	private SaveNewUserUseCase saveNewUserUseCase;
-	private GetCurrentUserUseCase getCurrentUserUseCase;
-	private IsUserAuthorizedUseCase isUserAuthorizedUseCase;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		binding = ActivityAuthorizationBinding.inflate(getLayoutInflater());
 		setContentView(binding.getRoot());
-		initUseCases();
+		authorizationViewModel = new ViewModelProvider(this, new AuthorizationViewModelFactory(this)).get(AuthorizationViewModel.class);
 		initWidgets();
+		observeViewModel();
 		checkAuthorization();
 		buttonsFunctions();
-	}
-
-	private void initUseCases() {
-		AuthStorage authStorage = new FirebaseAuthStorage();
-		AuthRepositoryImpl authRepository = new AuthRepositoryImpl(authStorage);
-		loginUseCase = new LoginUseCase(authRepository);
-		registerUseCase = new RegisterUseCase(authRepository);
-		isUserAuthorizedUseCase = new IsUserAuthorizedUseCase(authRepository);
-
-		UserStorage userStorage = new SharedPrefsUserStorage(this);
-		UserRepository userRepository = new UserRepositoryImpl(userStorage);
-		saveNewUserUseCase = new SaveNewUserUseCase(userRepository);
-		getCurrentUserUseCase = new GetCurrentUserUseCase(userRepository);
 	}
 
 	private void initWidgets() {
@@ -90,11 +60,22 @@ public class AuthorizationActivity extends AppCompatActivity {
 		blackColor = getResources().getColor(R.color.black, null);
 	}
 
+	private void observeViewModel() {
+		authorizationViewModel.isAuthorized().observe(this, isAuthorized -> {
+			if (isAuthorized) {
+				startActivity(new Intent(AuthorizationActivity.this, AccountActivity.class));
+			}
+		});
+
+		authorizationViewModel.getErrorMessage().observe(this, errorMessage -> {
+			if (errorMessage != null) {
+				Toast.makeText(AuthorizationActivity.this, errorMessage, Toast.LENGTH_SHORT).show();
+			}
+		});
+	}
+
 	private void checkAuthorization() {
-		boolean isAuthorized = isUserAuthorizedUseCase.execute();
-		if (isAuthorized) {
-			startActivity(new Intent(AuthorizationActivity.this, AccountActivity.class));
-		}
+		authorizationViewModel.checkAuthorization();
 	}
 
 	private void buttonsFunctions() {
@@ -105,7 +86,7 @@ public class AuthorizationActivity extends AppCompatActivity {
 			String email = binding.editTextEmail.getText().toString();
 			String password = binding.editTextPassword.getText().toString();
 			if (checkFields(email, password)) {
-				loginFunction(email, password);
+				authorizationViewModel.login(email, password);
 			}
 		});
 
@@ -116,7 +97,7 @@ public class AuthorizationActivity extends AppCompatActivity {
 			if (name.isEmpty()) {
 				Toast.makeText(AuthorizationActivity.this, "Name can't be empty", Toast.LENGTH_SHORT).show();
 			} else if (checkFields(email, password)) {
-				registerFunction(name, email, password);
+				authorizationViewModel.register(name, email, password);
 			}
 		});
 	}
@@ -130,38 +111,6 @@ public class AuthorizationActivity extends AppCompatActivity {
 			return false;
 		}
 		return true;
-	}
-
-	private void loginFunction(String email, String password) {
-		loginUseCase.execute(email, password, new AuthCallback() {
-			@Override
-			public void onSuccess() {
-				Toast.makeText(AuthorizationActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
-				startActivity(new Intent(AuthorizationActivity.this, AccountActivity.class));
-			}
-			@Override
-			public void onError(String errorMessage) {
-				Toast.makeText(AuthorizationActivity.this, "Login failed: " + errorMessage, Toast.LENGTH_SHORT).show();
-				editTextPassword.setText("");
-			}
-		});
-	}
-
-	private void registerFunction(String name, String email, String password) {
-		registerUseCase.execute(email, password, new AuthCallback() {
-			@Override
-			public void onSuccess() {
-				Toast.makeText(AuthorizationActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
-				saveNewUserUseCase.execute(new UserDTO(1, name, email, password, new ArrayList<>()));
-				startActivity(new Intent(AuthorizationActivity.this, AccountActivity.class));
-			}
-			@Override
-			public void onError(String errorMessage) {
-				Toast.makeText(AuthorizationActivity.this, "Registration failed: " + errorMessage, Toast.LENGTH_SHORT).show();
-				editTextEmail.setText("");
-				editTextPassword.setText("");
-			}
-		});
 	}
 
 	private void changeFormLogin() {
@@ -189,5 +138,4 @@ public class AuthorizationActivity extends AppCompatActivity {
 	private int convertDpToPx(int dp) {
 		return (int) (dp * getResources().getDisplayMetrics().density);
 	}
-
 }

@@ -5,175 +5,90 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
-import com.google.firebase.auth.FirebaseAuth;
-
-import java.util.List;
-
-import ru.mirea.shamrov.data.firebase.AuthStorage;
-import ru.mirea.shamrov.data.firebase.authstorage.FirebaseAuthStorage;
-import ru.mirea.shamrov.data.repository.AuthRepositoryImpl;
-import ru.mirea.shamrov.data.repository.DishRepositoryImpl;
-import ru.mirea.shamrov.data.storage.DishStorage;
-import ru.mirea.shamrov.data.storage.internalstorage.InternalDishStorage;
-import ru.mirea.shamrov.domain.models.DishDTO;
-import ru.mirea.shamrov.domain.repository.AuthRepository;
-import ru.mirea.shamrov.domain.repository.DishRepository;
-import ru.mirea.shamrov.domain.usecases.authentication.LogoutUseCase;
-import ru.mirea.shamrov.domain.usecases.dishes.AddNewDishUseCase;
-import ru.mirea.shamrov.domain.usecases.dishes.GetAllDishesUseCase;
-import ru.mirea.shamrov.domain.usecases.dishes.GetDishesByTitleUseCase;
 import ru.mirea.shamrov.freshchef.databinding.ActivityMainBinding;
+import ru.mirea.shamrov.freshchef.presentation.viewmodel.MainViewModel;
+import ru.mirea.shamrov.freshchef.presentation.viewmodel.MainViewModelFactory;
 
 public class MainActivity extends AppCompatActivity {
 
 	private ActivityMainBinding binding;
+	private MainViewModel homeViewModel;
 
-	private DishRepository dishRepository;
-//	private UserRepository userRepository;
-
-	private TextView textViewInfoText;
-	private EditText editTextFindDishByTitle;
-	private EditText editTextAddTitle;
-	private EditText editTextAddPrice;
-	private Button buttonGetAllDishes;
-	private Button buttonFindDishByTitle;
+	private TextView textViewAllDishes;
+	private EditText editTextDishTitle;
+	private EditText editTextDishPrice;
 	private Button buttonAddNewDish;
-
-	private EditText editTextFindUsersFavoriteDishes;
-	private Button buttonGetAllUsers;
-	private Button buttonFindUserFavoriteDishes;
-
-	private LogoutUseCase logoutUseCase;
+	private Button buttonDeleteDish;
+	private Button buttonGetDishFromApi;
+	private Button buttonGoToProfile;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		homeViewModel = new ViewModelProvider(this, new MainViewModelFactory(this)).get(MainViewModel.class);
 		binding = ActivityMainBinding.inflate(getLayoutInflater());
 		setContentView(binding.getRoot());
 		initWidgets();
-		initRepository();
-		initUseCases();
-		buttonsFunctions();
+		initObservers();
+		initButtons();
+		homeViewModel.getAllDishes();
 	}
 
 	private void initWidgets() {
-		textViewInfoText = binding.textViewInfoText;
-		editTextFindDishByTitle = binding.editTextFindDishByTitle;
-		editTextAddTitle = binding.editTextAddTitle;
-		editTextAddPrice = binding.editTextAddPrice;
-		editTextFindUsersFavoriteDishes = binding.editTextFindUsersFavoriteDishes;
-		buttonGetAllDishes = binding.buttonGetAllDishes;
-		buttonFindDishByTitle = binding.buttonFindDishByTitle;
+		textViewAllDishes = binding.textViewAllDishes;
+		editTextDishTitle = binding.editTextDishTitle;
+		editTextDishPrice = binding.editTextDishPrice;
 		buttonAddNewDish = binding.buttonAddNewDish;
-		buttonGetAllUsers = binding.buttonGetAllUsers;
-		buttonFindUserFavoriteDishes = binding.buttonFindUserFavoriteDishes;
-
+		buttonDeleteDish = binding.buttonDeleteDish;
+		buttonGetDishFromApi = binding.buttonGetDishFromApi;
+		buttonGoToProfile = binding.buttonGoToProfile;
 	}
 
-	private void initRepository() {
-		DishStorage dishStorage = new InternalDishStorage();
-		dishRepository = new DishRepositoryImpl(dishStorage);
-//		UserStorage userStorage = new InternalUserStorage();
-//		userRepository = new UserRepositoryImpl(userStorage);
-	}
-
-	private void initUseCases() {
-		AuthStorage authStorage = new FirebaseAuthStorage();
-		AuthRepository authRepository = new AuthRepositoryImpl(authStorage);
-		logoutUseCase = new LogoutUseCase(authRepository);
-	}
-
-	private void buttonsFunctions() {
-		buttonGetAllDishes.setOnClickListener(view -> {
-			List<DishDTO> resultAllDishes = new GetAllDishesUseCase(dishRepository).execute();
-			StringBuilder resultString = new StringBuilder();
-			if (!resultAllDishes.isEmpty()) {
-				resultString.append("List of All Dishes:\n");
-				for (DishDTO currentDish : resultAllDishes) {
-					resultString.append("-------------------------------------------------------\n")
-							.append(currentDish.toString())
-							.append("\n");
-				}
-			} else {
-				resultString.append("No dish added");
+	private void initObservers() {
+		homeViewModel.getFormattedData().observe(this, text ->
+				textViewAllDishes.setText(text)
+		);
+		homeViewModel.getApiDish().observe(this, apiDish -> {
+			if (apiDish != null) {
+				editTextDishTitle.setText(apiDish.getTitle());
+				editTextDishPrice.setText(apiDish.getPrice().toString());
 			}
-			textViewInfoText.setText(resultString);
 		});
+		homeViewModel.getErrorMessage().observe(this, error ->
+				Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
+		);
+		homeViewModel.getSuccessMessage().observe(this, message ->
+				Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+		);
+	}
 
-		buttonFindDishByTitle.setOnClickListener(view -> {
-			List<DishDTO> foundDishes = new GetDishesByTitleUseCase(dishRepository)
-					.execute(editTextFindDishByTitle.getText().toString());
-			StringBuilder resultString = new StringBuilder();
-			if (!foundDishes.isEmpty()) {
-				resultString.append("List of Found Dishes:\n");
-				for (DishDTO currentDish : foundDishes) {
-					resultString.append("-------------------------------------------------------\n")
-							.append(currentDish.toString())
-							.append("\n\n");
-				}
-			} else {
-				resultString.append("No dishes found");
-			}
-			textViewInfoText.setText(resultString);
-		});
-
+	private void initButtons() {
 		buttonAddNewDish.setOnClickListener(view -> {
-			String priceText = editTextAddPrice.getText().toString();
 			try {
-				Double price = Double.parseDouble(priceText);
-				boolean resultAdd = new AddNewDishUseCase(dishRepository)
-						.execute(new DishDTO(0, editTextAddTitle.getText().toString(), price));
-				if (resultAdd) {
-					textViewInfoText.setText("Dish added successfully");
-				} else {
-					textViewInfoText.setText("Current dish already exist");
-				}
+				String title = editTextDishTitle.getText().toString();
+				Double price = Double.parseDouble(editTextDishPrice.getText().toString());
+				homeViewModel.addNewDish(title, price);
 			} catch (NumberFormatException e) {
-				textViewInfoText.setText("Incorrect price input");
+				Toast.makeText(this, "Invalid price format", Toast.LENGTH_SHORT).show();
 			}
 		});
 
-//		buttonGetAllUsers.setOnClickListener(view -> {
-//			List<UserDTO> resultAllUsers = new GetAllUsersUseCase(userRepository).execute();
-//			StringBuilder resultString = new StringBuilder();
-//			if (!resultAllUsers.isEmpty()) {
-//				resultString.append("List of All Users:\n");
-//				for (UserDTO currentUser : resultAllUsers) {
-//					resultString.append("-------------------------------------------------------\n")
-//							.append(currentUser.toString())
-//							.append("\n");
-//				}
-//			} else {
-//				resultString.append("No users added");
-//			}
-//			textViewInfoText.setText(resultString);
-//		});
-//
-//		buttonFindUserFavoriteDishes.setOnClickListener(view -> {
-//			List<Integer> idsFavouriteDishes = new GetUserFavoriteDishesUseCase(userRepository)
-//					.execute(editTextFindUsersFavoriteDishes.getText().toString());
-//			StringBuilder resultString = new StringBuilder();
-//			if (idsFavouriteDishes.contains(-1)) {
-//				resultString.append("No user with such name found");
-//			} else {
-//				if (idsFavouriteDishes.isEmpty()) {
-//					resultString.append("User didn't add any dish to his favorite");
-//				} else {
-//					List<DishDTO> resultFavoriteDishes = new GetDishesByIdUseCase(dishRepository)
-//							.execute(idsFavouriteDishes);
-//					resultString.append("List of Favorite Dishes:\n");
-//					for (DishDTO currentDish : resultFavoriteDishes) {
-//						resultString.append("-------------------------------------------------------\n")
-//								.append(currentDish.toString())
-//								.append("\n\n");
-//					}
-//				}
-//			}
-//			textViewInfoText.setText(resultString);
-//		});
-	}
+		buttonDeleteDish.setOnClickListener(view -> {
+			String title = editTextDishTitle.getText().toString();
+			homeViewModel.deleteDish(title);
+		});
 
+		buttonGetDishFromApi.setOnClickListener(view ->
+				homeViewModel.getDishFromApi()
+		);
+
+		buttonGoToProfile.setOnClickListener(view -> {
+			startActivity(new Intent(MainActivity.this, AccountActivity.class));
+		});
+	}
 }

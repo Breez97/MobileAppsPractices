@@ -7,23 +7,17 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
-import ru.mirea.shamrov.data.firebase.AuthStorage;
-import ru.mirea.shamrov.data.firebase.authstorage.FirebaseAuthStorage;
-import ru.mirea.shamrov.data.repository.AuthRepositoryImpl;
-import ru.mirea.shamrov.data.repository.UserRepositoryImpl;
-import ru.mirea.shamrov.data.storage.UserStorage;
-import ru.mirea.shamrov.data.storage.sharedprefs.SharedPrefsUserStorage;
-import ru.mirea.shamrov.domain.models.UserDTO;
-import ru.mirea.shamrov.domain.repository.AuthRepository;
-import ru.mirea.shamrov.domain.repository.UserRepository;
-import ru.mirea.shamrov.domain.usecases.authentication.LogoutUseCase;
-import ru.mirea.shamrov.domain.usecases.users.GetCurrentUserUseCase;
 import ru.mirea.shamrov.freshchef.databinding.ActivityAccountBinding;
+import ru.mirea.shamrov.freshchef.presentation.viewmodel.AccountViewModel;
+import ru.mirea.shamrov.freshchef.presentation.viewmodel.AccountViewModelFactory;
 
 public class AccountActivity extends AppCompatActivity {
 
 	private ActivityAccountBinding binding;
+
+	private AccountViewModel accountViewModel;
 
 	private ImageButton buttonLogoMain;
 	private EditText editTextNameAccount;
@@ -32,18 +26,16 @@ public class AccountActivity extends AppCompatActivity {
 	private Button buttonSave;
 	private Button buttonLogout;
 
-	private GetCurrentUserUseCase getCurrentUserUseCase;
-	private LogoutUseCase logoutUseCase;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		accountViewModel = new ViewModelProvider(this, new AccountViewModelFactory(this)).get(AccountViewModel.class);
 		binding = ActivityAccountBinding.inflate(getLayoutInflater());
 		setContentView(binding.getRoot());
 		initWidgets();
-		initUseCases();
-		fillWidgets();
+		initObservers();
 		buttonsFunctions();
+		accountViewModel.getUserInfo();
 	}
 
 	private void initWidgets() {
@@ -55,30 +47,22 @@ public class AccountActivity extends AppCompatActivity {
 		buttonLogout = binding.buttonLogout;
 	}
 
-	private void initUseCases() {
-		UserStorage userStorage = new SharedPrefsUserStorage(this);
-		UserRepository userRepository = new UserRepositoryImpl(userStorage);
-		getCurrentUserUseCase = new GetCurrentUserUseCase(userRepository);
-
-		AuthStorage authStorage = new FirebaseAuthStorage();
-		AuthRepository authRepository = new AuthRepositoryImpl(authStorage);
-		logoutUseCase = new LogoutUseCase(authRepository);
-	}
-
-	private void fillWidgets() {
-		UserDTO userDTO = getCurrentUserUseCase.execute();
-		editTextNameAccount.setText(userDTO.getName());
-		editTextEmailAccount.setText(userDTO.getEmail());
+	private void initObservers() {
+		accountViewModel.getUserData().observe(this, userDTO -> {
+			if (userDTO != null) {
+				editTextNameAccount.setText(userDTO.getName());
+				editTextEmailAccount.setText(userDTO.getEmail());
+			}
+		});
 	}
 
 	private void buttonsFunctions() {
 		buttonLogoMain.setOnClickListener(view -> {
-			startActivity(new Intent(AccountActivity.this, HomeActivity.class));
-//			startActivity(new Intent(AccountActivity.this, MainActivity.class));
+			startActivity(new Intent(AccountActivity.this, MainActivity.class));
 		});
 
 		buttonLogout.setOnClickListener(view -> {
-			logoutUseCase.execute();
+			accountViewModel.userLogout();
 			startActivity(new Intent(AccountActivity.this, AuthorizationActivity.class));
 		});
 	}
