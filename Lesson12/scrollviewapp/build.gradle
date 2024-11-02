@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'ru.mirea.shamrov.scrollviewapp'
+    namespace 'ru.mirea.shamrov.scrollview'
     compileSdk 34
 
     defaultConfig {
-        applicationId "ru.mirea.shamrov.scrollviewapp"
+        applicationId "ru.mirea.shamrov.scrollview"
         minSdk 26
         targetSdk 34
         versionCode 1

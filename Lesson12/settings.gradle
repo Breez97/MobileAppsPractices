@@ -22,4 +22,8 @@ dependencyResolutionManagement {
 rootProject.name = "Lesson12"
 include ':app'
 include ':scrollviewapp'
+include ':scrollviewapp_task'
 include ':listviewapp'
+include ':listviewapp_task'
+include ':recyclerviewapp'
+include ':recyclerviewapp_task'

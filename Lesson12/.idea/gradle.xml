@@ -11,7 +11,11 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/listviewapp" />
+            <option value="$PROJECT_DIR$/listviewapp_task" />
+            <option value="$PROJECT_DIR$/recyclerviewapp" />
+            <option value="$PROJECT_DIR$/recyclerviewapp_task" />
             <option value="$PROJECT_DIR$/scrollviewapp" />
+            <option value="$PROJECT_DIR$/scrollviewapp_task" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />
