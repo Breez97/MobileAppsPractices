@@ -16,7 +16,7 @@
 - 8-я практическая работа (**Зачтена**) : [Практическая 8](https://github.com/Breez97/MobileAppsPractices/tree/main/Lesson8) -> [Контрольное задание (MireaProject)](https://github.com/Breez97/MobileAppsPractices/tree/main/MireaProject/app/src/main/java/ru/mirea/shamrovio/mireaproject/ui/lesson8)
 
 #### 7-й семестр
-- [Диаграммы для приложения](https://github.com/Breez97/MobileAppsPractices/tree/main/FreshChef_Diagrams)
+- [Диаграммы для приложения](https://github.com/Breez97/MobileAppsPractices/blob/main/FreshChef/README.md)
 - [Прототип приложения (Figma)](https://www.figma.com/design/IEK7QbSNw1bIgS2D3yWOk5/Frech-Chef?node-id=0-1&t=jo07jzRCL1kBLln8-1)
 - 9-я практическая работа (**Зачтена**) : [Практическая 9](https://github.com/Breez97/MobileAppsPractices/tree/main/Lesson9) -> [Контрольное задание (FreshChef)](https://github.com/Breez97/MobileAppsPractices/tree/main/FreshChef)
 - 10-я практическая работа (**Зачтена**) : [Практическая 10](https://github.com/Breez97/MobileAppsPractices/tree/main/Lesson10) -> [Контрольное задание (FreshChef)](https://github.com/Breez97/MobileAppsPractices/tree/main/FreshChef) (commit: c6946f6)
