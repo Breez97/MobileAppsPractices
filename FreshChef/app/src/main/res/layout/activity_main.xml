@@ -89,11 +89,11 @@
             android:layout_height="50dp" />
 
         <Button
-            android:id="@+id/buttonGoToProfile"
+            android:id="@+id/buttonMenu"
             android:layout_width="215dp"
             android:layout_height="wrap_content"
-            android:text="Профиль"
-            android:backgroundTint="@color/buttons_green"/>
+            android:backgroundTint="@color/buttons_green"
+            android:text="Главное меню" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

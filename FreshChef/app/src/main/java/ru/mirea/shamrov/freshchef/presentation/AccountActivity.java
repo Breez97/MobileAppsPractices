@@ -58,7 +58,7 @@ public class AccountActivity extends AppCompatActivity {
 
 	private void buttonsFunctions() {
 		buttonLogoMain.setOnClickListener(view -> {
-			startActivity(new Intent(AccountActivity.this, MainActivity.class));
+			startActivity(new Intent(AccountActivity.this, MenuActivity.class));
 		});
 
 		buttonLogout.setOnClickListener(view -> {

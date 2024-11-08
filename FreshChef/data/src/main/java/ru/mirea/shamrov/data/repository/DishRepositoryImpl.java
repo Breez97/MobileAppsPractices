@@ -1,6 +1,5 @@
 package ru.mirea.shamrov.data.repository;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,11 +45,13 @@ public class DishRepositoryImpl implements DishRepository {
 	}
 
 	private DishStorage mapToDish(DishDTO dish) {
-		return new DishStorage(dish.getId(), dish.getTitle(), dish.getPrice(), LocalDate.now());
+		return new DishStorage(dish.getId(), dish.getImage(), dish.getTitle(), dish.getDescription(), dish.getPrice(), dish.getGrams());
 	}
 
 	private DishDTO mapToDishDTO(DishStorage dish) {
-		return new DishDTO(dish.getId(), dish.getTitle(), dish.getPrice());
+		return new DishDTO(dish.getId(), dish.getImage(), dish.getTitle(), dish.getDescription(), dish.getPrice(), dish.getGrams());
 	}
+
+
 
 }

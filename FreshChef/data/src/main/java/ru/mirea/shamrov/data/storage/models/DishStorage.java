@@ -1,51 +1,69 @@
 package ru.mirea.shamrov.data.storage.models;
 
-import java.time.LocalDate;
-
 public class DishStorage {
 
 	private Integer id;
+	private String image;
 	private String title;
+	private String description;
 	private Double price;
-	private LocalDate localDate;
+	private Integer grams;
 
-	public DishStorage(Integer id, String title, Double price, LocalDate localDate) {
+
+	public DishStorage(Integer id, String image, String title, String description, Double price, Integer grams) {
 		this.id = id;
+		this.image = image;
 		this.title = title;
+		this.description = description;
 		this.price = price;
-		this.localDate = localDate;
+		this.grams = grams;
 	}
 
 	public Integer getId() {
 		return id;
 	}
 
+	public String getImage() {
+		return image;
+	}
+
 	public String getTitle() {
 		return title;
+	}
+
+	public String getDescription() {
+		return description;
 	}
 
 	public Double getPrice() {
 		return price;
 	}
 
-	public LocalDate getLocalDate() {
-		return localDate;
+	public Integer getGrams() {
+		return grams;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public void setPrice(Double price) {
 		this.price = price;
 	}
 
-	public void setLocalDate(LocalDate localDate) {
-		this.localDate = localDate;
+	public void setGrams(Integer grams) {
+		this.grams = grams;
 	}
-
 }

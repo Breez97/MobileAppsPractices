@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 	private Button buttonAddNewDish;
 	private Button buttonDeleteDish;
 	private Button buttonGetDishFromApi;
-	private Button buttonGoToProfile;
+	private Button buttonMenu;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 		buttonAddNewDish = binding.buttonAddNewDish;
 		buttonDeleteDish = binding.buttonDeleteDish;
 		buttonGetDishFromApi = binding.buttonGetDishFromApi;
-		buttonGoToProfile = binding.buttonGoToProfile;
+		buttonMenu = binding.buttonMenu;
 	}
 
 	private void initObservers() {
@@ -83,12 +83,10 @@ public class MainActivity extends AppCompatActivity {
 			homeViewModel.deleteDish(title);
 		});
 
-		buttonGetDishFromApi.setOnClickListener(view ->
-				homeViewModel.getDishFromApi()
-		);
+		buttonGetDishFromApi.setOnClickListener(view -> homeViewModel.getDishFromApi());
 
-		buttonGoToProfile.setOnClickListener(view -> {
-			startActivity(new Intent(MainActivity.this, AccountActivity.class));
-		});
+		buttonMenu.setOnClickListener(view ->
+				startActivity(new Intent(MainActivity.this, MenuActivity.class))
+		);
 	}
 }

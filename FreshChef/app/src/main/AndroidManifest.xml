@@ -13,6 +13,12 @@
         android:theme="@style/Theme.FreshChef"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.CatalogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.MenuActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.AccountActivity"
             android:exported="false" />
         <activity

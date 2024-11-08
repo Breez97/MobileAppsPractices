@@ -1,6 +1,5 @@
 package ru.mirea.shamrov.data.storage.internalstorage;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,8 +10,24 @@ public class InternalDishStorage implements ru.mirea.shamrov.data.storage.DishSt
 
 	private final List<DishStorage> DISHES = new ArrayList<>(
 			List.of(
-					new DishStorage(1, "Grilled Chicken Salad", 9.99, LocalDate.now()),
-					new DishStorage(2, "Avocado Toast with Egg", 6.50, LocalDate.now())
+					new DishStorage(1, "burgers_image", "Вегетерианские бургеры",
+							"с майонезом Карри и картофелем фри", 499.0, 300),
+					new DishStorage(2, "burgers_image", "Вегетерианские бургеры",
+							"с майонезом Карри и картофелем фри", 499.0, 300),
+					new DishStorage(3, "burgers_image", "Вегетерианские бургеры",
+							"с майонезом Карри и картофелем фри", 499.0, 300),
+					new DishStorage(4, "burgers_image", "Вегетерианские бургеры",
+							"с майонезом Карри и картофелем фри", 499.0, 300),
+					new DishStorage(5, "burgers_image", "Вегетерианские бургеры",
+							"с майонезом Карри и картофелем фри", 499.0, 300),
+					new DishStorage(6, "burgers_image", "Вегетерианские бургеры",
+							"с майонезом Карри и картофелем фри", 499.0, 300),
+					new DishStorage(7, "burgers_image", "Вегетерианские бургеры",
+							"с майонезом Карри и картофелем фри", 499.0, 300),
+					new DishStorage(8, "burgers_image", "Вегетерианские бургеры",
+							"с майонезом Карри и картофелем фри", 499.0, 300),
+					new DishStorage(9, "burgers_image", "Вегетерианские бургеры",
+							"с майонезом Карри и картофелем фри", 499.0, 300)
 			)
 	);
 
