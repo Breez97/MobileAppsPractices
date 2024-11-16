@@ -22,4 +22,5 @@
 - 10-я практическая работа (**Зачтена**) : [Практическая 10](https://github.com/Breez97/MobileAppsPractices/tree/main/Lesson10) -> [Контрольное задание (FreshChef)](https://github.com/Breez97/MobileAppsPractices/tree/main/FreshChef) (commit: c6946f6)
 - 11-я практическая работа : [Практическая 11](https://github.com/Breez97/MobileAppsPractices/tree/main/Lesson11) -> [Контрольное задание (FreshChef)](https://github.com/Breez97/MobileAppsPractices/tree/main/FreshChef) (commit: 293b762)
 - 12-я практическая работа : [Практическая 12](https://github.com/Breez97/MobileAppsPractices/tree/main/Lesson12) -> [Контрольное задание (FreshChef)](https://github.com/Breez97/MobileAppsPractices/tree/main/FreshChef) (commit: 9b9ec68)
+- 13-я практическая работа : [Практическая 13](https://github.com/Breez97/MobileAppsPractices/tree/main/Lesson13) -> [Контрольное задание (FreshChef)](https://github.com/Breez97/MobileAppsPractices/tree/main/FreshChef) (commit: a6b6e6f)
 ---
