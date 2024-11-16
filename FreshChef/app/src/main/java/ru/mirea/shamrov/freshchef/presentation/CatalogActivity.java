@@ -26,7 +26,7 @@ public class CatalogActivity extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		catalogViewModel = new ViewModelProvider(this, new CatalogViewModelFactory()).get(CatalogViewModel.class);
+		catalogViewModel = new ViewModelProvider(this, new CatalogViewModelFactory(this)).get(CatalogViewModel.class);
 		binding = ActivityCatalogBinding.inflate(getLayoutInflater());
 		setContentView(binding.getRoot());
 		initWidgets();

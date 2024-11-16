@@ -10,19 +10,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import ru.mirea.shamrov.domain.models.DishDTO;
+import ru.mirea.shamrov.domain.models.DishRetrofitDTO;
 import ru.mirea.shamrov.freshchef.R;
 
 public class CatalogAdapter extends RecyclerView.Adapter<CatalogAdapter.SimpleCatalogViewHolder> {
 
-	private List<DishDTO> itemList = new ArrayList<>();
+	private List<DishRetrofitDTO> itemList = new ArrayList<>();
 	private Context context;
 
-	public void setItems(List<DishDTO> itemList, Context context) {
+	public void setItems(List<DishRetrofitDTO> itemList, Context context) {
 		this.itemList = itemList;
 		this.context = context;
 		notifyDataSetChanged();
@@ -62,14 +64,18 @@ public class CatalogAdapter extends RecyclerView.Adapter<CatalogAdapter.SimpleCa
 			this.dishGrams = itemView.findViewById(R.id.dishGram);
 		}
 
-		public void bind(DishDTO item) {
+		public void bind(DishRetrofitDTO item) {
 			dishTitle.setText(item.getTitle());
-			dishDescription.setText(item.getDescription());
+			dishDescription.setText(item.getCategory());
 			dishPrice.setText(String.format(Locale.getDefault(), "%.0f ₽", item.getPrice()));
-			dishGrams.setText(String.format(Locale.getDefault(), "%d г", item.getGrams()));
-			String pkgName = context.getPackageName();
-			int resID = context.getResources().getIdentifier(item.getImage(), "drawable", pkgName);
-			dishImage.setImageResource(resID);
+			dishGrams.setText(String.format(Locale.getDefault(), "%d г", item.getAmount()));
+			Picasso.get()
+					.load(item.getImageUrl())
+					.placeholder(R.drawable.ic_launcher_foreground)
+					.error(R.drawable.ic_launcher_background)
+					.resize(450, 250)
+					.centerCrop()
+					.into(dishImage);
 		}
 
 	}
