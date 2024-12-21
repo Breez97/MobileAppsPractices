@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'ru.mirea.shamrov.freshchef'
+    namespace 'ru.mirea.shamrov.bottomnavigationapp'
     compileSdk 34
 
     defaultConfig {
-        applicationId "ru.mirea.shamrov.freshchef"
+        applicationId "ru.mirea.shamrov.bottomnavigationapp"
         minSdk 26
         targetSdk 34
         versionCode 1
@@ -24,8 +24,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     buildFeatures {
         viewBinding true
@@ -36,11 +36,12 @@ dependencies {
 
     implementation libs.appcompat
     implementation libs.material
-    implementation libs.activity
     implementation libs.constraintlayout
     implementation libs.firebase.auth
-    implementation libs.androidx.room.gradle.plugin
-    implementation libs.androidx.room.common
+    implementation libs.androidx.lifecycle.livedata.ktx
+    implementation libs.androidx.lifecycle.viewmodel.ktx
+    implementation libs.androidx.navigation.fragment
+    implementation libs.androidx.navigation.ui
     implementation project(':data')
     implementation project(':domain')
     implementation 'com.squareup.picasso:picasso:2.8'

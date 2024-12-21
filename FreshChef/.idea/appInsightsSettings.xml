@@ -8,8 +8,8 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="ru.mirea.shamrov.freshchef" />
-                  <option name="mobileSdkAppId" value="1:457347253848:android:49d928e3c9111a6ab52c2d" />
+                  <option name="appId" value="ru.mirea.shamrov.bottomnavigationapp" />
+                  <option name="mobileSdkAppId" value="1:457347253848:android:83fef31271901ad7b52c2d" />
                   <option name="projectId" value="fresh-chef-project" />
                   <option name="projectNumber" value="457347253848" />
                 </ConnectionSetting>
