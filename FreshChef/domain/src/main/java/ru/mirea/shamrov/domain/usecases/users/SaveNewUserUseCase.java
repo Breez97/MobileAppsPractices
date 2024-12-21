@@ -11,8 +11,8 @@ public class SaveNewUserUseCase {
 		this.userRepository = userRepository;
 	}
 
-	public boolean execute(UserDTO userDTO) {
-		return userRepository.saveNewUser(userDTO);
+	public void execute(UserDTO userDTO) {
+		userRepository.saveNewUser(userDTO);
 	}
 
 }

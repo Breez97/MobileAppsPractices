@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProvider;
 import ru.mirea.shamrov.data.firebase.AuthStorage;
 import ru.mirea.shamrov.data.firebase.authstorage.FirebaseAuthStorage;
 import ru.mirea.shamrov.data.repository.AuthRepositoryImpl;
-import ru.mirea.shamrov.data.repository.UserRepositoryImpl;
 import ru.mirea.shamrov.data.storage.UserStorage;
 import ru.mirea.shamrov.data.storage.sharedprefs.SharedPrefsUserStorage;
 import ru.mirea.shamrov.domain.repository.AuthRepository;

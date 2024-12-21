@@ -32,9 +32,9 @@ public class AccountViewModel extends ViewModel {
 	}
 
 	public void getUserInfo() {
-		UserDTO userDTO = getCurrentUserUseCase.execute();
-		System.out.println(userDTO);
-		userData.setValue(userDTO);
+//		UserDTO userDTO = getCurrentUserUseCase.execute();
+//		System.out.println(userDTO);
+//		userData.setValue(userDTO);
 	}
 
 	public void userLogout() {

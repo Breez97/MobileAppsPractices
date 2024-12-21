@@ -48,9 +48,7 @@ public class TodoRecyclerViewAdapter extends RecyclerView.Adapter<TodoViewHolder
 				.centerCrop()
 				.into(holder.getImageView());
 		holder.getCheckBoxCompleted().setOnCheckedChangeListener((buttonView, isChecked) -> {
-			if (isChecked) {
-				listener.onCheckBoxClicked(position);
-			}
+			listener.onCheckBoxClicked(position);
 		});
 	}
 

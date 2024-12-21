@@ -50,4 +50,12 @@ public class Todo {
 		this.completed = completed;
 	}
 
+	@Override
+	public String toString() {
+		return "userId: " + userId +
+				"\nid: " + id +
+				"\nTitle: " + title +
+				"\nCompleted: " + completed;
+	}
+
 }

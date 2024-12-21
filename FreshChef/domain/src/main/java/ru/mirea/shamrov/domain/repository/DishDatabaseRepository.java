@@ -10,6 +10,6 @@ public interface DishDatabaseRepository {
 	void addNewDish(DishDatabaseDTO dishDatabaseDTO);
 	void deleteDish(String title);
 	void getAllDishes(DatabaseCallback<List<DishDatabaseDTO>> callback);
-	DishDatabaseDTO getDishFromApi();
+//	DishDatabaseDTO getDishFromApi();
 
 }

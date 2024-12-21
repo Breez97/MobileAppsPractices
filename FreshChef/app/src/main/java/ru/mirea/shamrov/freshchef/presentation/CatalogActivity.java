@@ -6,7 +6,6 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
@@ -20,7 +19,6 @@ public class CatalogActivity extends AppCompatActivity {
 
 	private ActivityCatalogBinding binding;
 	private CatalogViewModel catalogViewModel;
-
 	private Button buttonCatalogToMenu;
 
 	@Override

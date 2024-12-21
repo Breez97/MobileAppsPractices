@@ -8,5 +8,6 @@ public interface AuthRepository {
 	void register(String email, String password, AuthCallback callback);
 	boolean isUserAuthorized();
 	void logout();
+	String getAuthenticatedUserEmail();
 
 }

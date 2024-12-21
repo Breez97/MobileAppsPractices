@@ -33,6 +33,11 @@ public class AuthRepositoryImpl implements AuthRepository {
 		authStorage.logout();
 	}
 
+	@Override
+	public String getAuthenticatedUserEmail() {
+		return authStorage.getAuthenticatedUserEmail();
+	}
+
 	static class AuthCallbackAdapter implements AuthCallbackFirebase {
 
 		private final AuthCallback authCallback;
@@ -50,6 +55,8 @@ public class AuthRepositoryImpl implements AuthRepository {
 		public void onError(String errorMessage) {
 			authCallback.onError(errorMessage);
 		}
+
+
 	}
 
 }

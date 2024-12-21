@@ -31,12 +31,25 @@ public class FirebaseAuthStorage implements AuthStorage {
 	@Override
 	public boolean isUserAuthorized() {
 		FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-		return firebaseUser != null;
+		if (firebaseUser != null) {
+			return true;
+		}
+		return false;
 	}
 
 	@Override
 	public void logout() {
 		firebaseAuth.signOut();
+	}
+
+	@Override
+	public String getAuthenticatedUserEmail() {
+		FirebaseUser user = firebaseAuth.getCurrentUser();
+		String email = "";
+		if (user != null) {
+			email = user.getEmail();
+		}
+		return email;
 	}
 
 }

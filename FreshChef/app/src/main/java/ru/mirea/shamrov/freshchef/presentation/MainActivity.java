@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.lifecycle.ViewModelProvider;
 
 import ru.mirea.shamrov.freshchef.databinding.ActivityMainBinding;

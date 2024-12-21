@@ -3,8 +3,6 @@ package ru.mirea.shamrov.data.repository;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import ru.mirea.shamrov.data.api.ApiNetwork;
-import ru.mirea.shamrov.data.api.model.DishApi;
 import ru.mirea.shamrov.data.roomdatabase.DishDatabaseStorage;
 import ru.mirea.shamrov.data.roomdatabase.model.DishDatabase;
 import ru.mirea.shamrov.data.roomdatabase.utils.RoomDatabaseCallback;
@@ -15,11 +13,9 @@ import ru.mirea.shamrov.domain.utils.DatabaseCallback;
 public class DishDatabaseRepositoryImpl implements DishDatabaseRepository {
 
 	private final DishDatabaseStorage dishDatabaseStorage;
-	private final ApiNetwork apiNetwork;
 
-	public DishDatabaseRepositoryImpl(DishDatabaseStorage dishDatabaseStorage, ApiNetwork apiNetwork) {
+	public DishDatabaseRepositoryImpl(DishDatabaseStorage dishDatabaseStorage) {
 		this.dishDatabaseStorage = dishDatabaseStorage;
-		this.apiNetwork = apiNetwork;
 	}
 
 	@Override
@@ -50,23 +46,39 @@ public class DishDatabaseRepositoryImpl implements DishDatabaseRepository {
 		});
 	}
 
-	@Override
-	public DishDatabaseDTO getDishFromApi() {
-		return mapDishApiToDishDatabaseDTO(apiNetwork.getRandomDish());
-	}
+//	@Override
+//	public DishDatabaseDTO getDishFromApi() {
+//		return mapDishApiToDishDatabaseDTO(apiNetwork.getRandomDish());
+//	}
 
 	private DishDatabase mapDishDatabaseDTOToDishDatabase(DishDatabaseDTO dish) {
-		return new DishDatabase(dish.getTitle(), dish.getPrice());
+		return new DishDatabase(
+				dish.getTitle(),
+				dish.getPrice(),
+				dish.getImageUrl(),
+				dish.getInstructions(),
+				dish.getCategory(),
+				dish.getArea());
 	}
 
-	public DishDatabaseDTO mapDishApiToDishDatabaseDTO(DishApi dishApi) {
-		if (dishApi == null || dishApi.getTitle() == null) {
-			return new DishDatabaseDTO("Unknown", 0.0);
-		}
-		return new DishDatabaseDTO(dishApi.getTitle(), dishApi.getPrice());
-	}
+//	public DishDatabaseDTO mapDishApiToDishDatabaseDTO(DishApi dishApi) {
+//		if (dishApi == null || dishApi.getTitle() == null) {
+//			return new DishDatabaseDTO("Unknown", 0.0, "Unknown", "Unknown", "Unknown", "Unknown");
+//		}
+//		return new DishDatabaseDTO(
+//				dishApi.getTitle(),
+//				dishApi.getPrice(),
+//				dishApi.);
+//	}
 
 	private DishDatabaseDTO mapDishDatabaseToDishDatabaseDTO(DishDatabase dish) {
-		return new DishDatabaseDTO(dish.getTitle(), dish.getPrice());
+		return new DishDatabaseDTO(
+				dish.getTitle(),
+				dish.getPrice(),
+				dish.getCategory(),
+				dish.getArea(),
+				dish.getInstructions(),
+				dish.getImageUrl()
+		);
 	}
 }

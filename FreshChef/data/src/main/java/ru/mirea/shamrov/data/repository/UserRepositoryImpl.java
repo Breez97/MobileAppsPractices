@@ -1,34 +1,52 @@
 package ru.mirea.shamrov.data.repository;
 
-import ru.mirea.shamrov.data.storage.UserStorage;
-import ru.mirea.shamrov.data.storage.models.User;
+
+import ru.mirea.shamrov.data.roomdatabase.UserDatabaseStorage;
+import ru.mirea.shamrov.data.roomdatabase.model.UserDatabase;
+import ru.mirea.shamrov.data.roomdatabase.utils.RoomDatabaseCallback;
 import ru.mirea.shamrov.domain.models.UserDTO;
 import ru.mirea.shamrov.domain.repository.UserRepository;
+import ru.mirea.shamrov.domain.utils.DatabaseCallback;
 
 public class UserRepositoryImpl implements UserRepository {
 
-	private final UserStorage userStorage;
+	private final UserDatabaseStorage userDatabaseStorage;
 
-	public UserRepositoryImpl(UserStorage userStorage) {
-		this.userStorage = userStorage;
+	public UserRepositoryImpl(UserDatabaseStorage userDatabaseStorage) {
+		this.userDatabaseStorage = userDatabaseStorage;
 	}
 
 	@Override
-	public boolean saveNewUser(UserDTO userDTO) {
-		return userStorage.saveNewUser(mapToUser(userDTO));
+	public void saveNewUser(UserDTO userDTO) {
+		userDatabaseStorage.addNewUser(mapToUserDatabase(userDTO));
 	}
 
 	@Override
-	public UserDTO getCurrentUser() {
-		return maptoUserDTO(userStorage.getCurrentUser());
+	public void getCurrentUser(String email, DatabaseCallback<UserDTO> callback) {
+		userDatabaseStorage.getCurrentUser(email, new RoomDatabaseCallback<UserDatabase>() {
+			@Override
+			public void onSuccess(UserDatabase user) {
+				callback.onSuccess(mapToUserDTO(user));
+			}
+
+			@Override
+			public void onError(Exception e) {
+				callback.onError(e);
+			}
+		});
 	}
 
-	private User mapToUser(UserDTO userDTO) {
-		return new User(userDTO.getId(), userDTO.getName(), userDTO.getEmail(), userDTO.getPassword(), userDTO.getFavoriteDishes());
+	@Override
+	public void updateUserInfoDatabase(UserDTO userDTO) {
+		userDatabaseStorage.updateUserInfoDatabase(mapToUserDatabase(userDTO));
 	}
 
-	private UserDTO maptoUserDTO(User user) {
-		return new UserDTO(user.getId(), user.getName(), user.getEmail(), user.getPassword(), user.getFavoriteDishes());
+	private UserDatabase mapToUserDatabase(UserDTO userDTO) {
+		return new UserDatabase(userDTO.getName(), userDTO.getEmail());
+	}
+
+	private UserDTO mapToUserDTO(UserDatabase userDatabase) {
+		return new UserDTO(userDatabase.getName(), userDatabase.getEmail());
 	}
 
 }

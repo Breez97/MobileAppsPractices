@@ -12,6 +12,7 @@ public class GetDishFromApiUseCase {
 	}
 
 	public DishDatabaseDTO execute() {
-		return dishDatabaseRepository.getDishFromApi();
+//		return dishDatabaseRepository.getDishFromApi();
+		return null;
 	}
 }

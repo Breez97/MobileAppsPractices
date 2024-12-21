@@ -1,6 +1,5 @@
 package ru.mirea.shamrov.retrofitapp;
 
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -76,21 +75,39 @@ public class MainActivity extends AppCompatActivity implements OnCheckBoxClickLi
 
 	@Override
 	public void onCheckBoxClicked(int position) {
-		int randomId = (int) (Math.random() * 200) + 1;
-		Call<Todo> call = apiService.getRandomTodo(randomId);
-		call.enqueue(new Callback<>() {
+		Call<Todo> call = apiService.getCurrentTodo(position + 1);
+		call.enqueue(new Callback<Todo>() {
 			@Override
 			public void onResponse(Call<Todo> call, Response<Todo> response) {
 				if (response.isSuccessful() && response.body() != null) {
-					Todo randomTodo = response.body();
-					String randomImage = "https://picsum.photos/200/200?random=" + (int) (Math.random() * 100);
-					adapter.updateTodo(position, randomTodo.getTitle(), randomImage);
+					Todo currentTodo = response.body();
+					updateTodo(currentTodo);
 				}
 			}
 
 			@Override
 			public void onFailure(Call<Todo> call, Throwable throwable) {
 				Log.e(TAG, "onFailure: " + throwable.getMessage());
+			}
+		});
+	}
+
+	private void updateTodo(Todo todo) {
+		todo.setCompleted(!todo.getCompleted());
+		Call<Todo> call = apiService.updateTodo(todo.getId(), todo);
+		call.enqueue(new Callback<Todo>() {
+			@Override
+			public void onResponse(Call<Todo> call, Response<Todo> response) {
+				if (response.isSuccessful() && response.body() != null) {
+					Log.d(TAG, "onSuccess updateTodo Status: " + response.code());
+				} else {
+					Log.e(TAG, "Update failed: " + response.code());
+				}
+			}
+
+			@Override
+			public void onFailure(Call<Todo> call, Throwable throwable) {
+				Log.e(TAG, "onFailure updateTodo: " + throwable.getMessage());
 			}
 		});
 	}

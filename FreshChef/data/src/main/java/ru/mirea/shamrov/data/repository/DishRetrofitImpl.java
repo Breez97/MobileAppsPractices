@@ -29,10 +29,22 @@ public class DishRetrofitImpl implements DishRetrofitRepository {
 		});
 	}
 
+	@Override
+	public void getDishById(Integer id, Callback callback) {
+
+	}
+
 	private DishRetrofitDTO mapRetrofitToDomain(ApiDishRetrofit apiDishRetrofit) {
 		Random random = new Random();
-		return new DishRetrofitDTO(apiDishRetrofit.getIdMeal(), apiDishRetrofit.getTitle(),
-				apiDishRetrofit.getCategory(), apiDishRetrofit.getImageUrl(),
-				100 + random.nextInt(401), 100 + (1000 - 100) * random.nextDouble());
+		return new DishRetrofitDTO(
+				apiDishRetrofit.getIdMeal(),
+				apiDishRetrofit.getTitle(),
+				apiDishRetrofit.getCategory(),
+				apiDishRetrofit.getImageUrl(),
+				100 + random.nextInt(401),
+				100 + (1000 - 100) * random.nextDouble(),
+				apiDishRetrofit.getArea(),
+				apiDishRetrofit.getInstructions());
 	}
+
 }

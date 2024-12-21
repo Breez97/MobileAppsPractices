@@ -8,5 +8,6 @@ public interface AuthStorage {
 	void register(String email, String password, AuthCallbackFirebase callback);
 	boolean isUserAuthorized();
 	void logout();
+	String getAuthenticatedUserEmail();
 
 }

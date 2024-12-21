@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="ru.mirea.shamrov.bottomnavigationapp.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_catalog"
+        android:name="ru.mirea.shamrov.bottomnavigationapp.ui.catalog.CatalogFragment"
+        android:label="@string/title_catalog"
+        tools:layout="@layout/fragment_catalog" />
+
+    <fragment
+        android:id="@+id/navigation_bag"
+        android:name="ru.mirea.shamrov.bottomnavigationapp.ui.bag.BagFragment"
+        android:label="@string/title_bag"
+        tools:layout="@layout/fragment_bag" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="ru.mirea.shamrov.bottomnavigationapp.ui.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_authorizationFragment"
+            app:destination="@id/navigation_authorization" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_authorization"
+        android:name="ru.mirea.shamrov.bottomnavigationapp.ui.authorization.AuthorizationFragment"
+        android:label="@string/title_authorization"
+        tools:layout="@layout/fragment_authorization">
+        <action
+            android:id="@+id/action_authorizationFragment_to_profileFragment"
+            app:destination="@id/navigation_profile" />
+    </fragment>
+
+</navigation>

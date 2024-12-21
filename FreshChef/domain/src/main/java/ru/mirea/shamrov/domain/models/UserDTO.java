@@ -1,69 +1,29 @@
 package ru.mirea.shamrov.domain.models;
 
-import java.util.List;
-
 public class UserDTO {
 
-	private Integer id;
 	private String name;
 	private String email;
-	private String password;
-	private List<Integer> favoriteDishes;
 
-	public UserDTO(Integer id, String name, String email, String password, List<Integer> favoriteDishes) {
-		this.id = id;
+	public UserDTO(String name, String email) {
 		this.name = name;
 		this.email = email;
-		this.password = password;
-		this.favoriteDishes = favoriteDishes;
-	}
-
-	public Integer getId() {
-		return id;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public List<Integer> getFavoriteDishes() {
-		return favoriteDishes;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public void setFavoriteDishes(List<Integer> favoriteDishes) {
-		this.favoriteDishes = favoriteDishes;
-	}
-
-	@Override
-	public String toString() {
-		return "id: " + id +
-				"\nName: " + name +
-				"\nEmail: " + email +
-				"\nPassword: " + password;
 	}
 
 }

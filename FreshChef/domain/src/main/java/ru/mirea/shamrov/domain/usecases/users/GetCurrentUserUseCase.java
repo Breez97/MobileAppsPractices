@@ -1,6 +1,7 @@
 package ru.mirea.shamrov.domain.usecases.users;
 
 import ru.mirea.shamrov.domain.models.UserDTO;
+import ru.mirea.shamrov.domain.repository.AuthRepository;
 import ru.mirea.shamrov.domain.repository.UserRepository;
 
 public class GetCurrentUserUseCase {
@@ -11,7 +12,8 @@ public class GetCurrentUserUseCase {
 		this.userRepository = userRepository;
 	}
 
-	public UserDTO execute() {
-		return userRepository.getCurrentUser();
-	}
+//	public UserDTO execute() {
+////		return userRepository.getCurrentUser("email");
+//	}
+
 }

@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class ApiDishRetrofit {
+
 	@SerializedName("idMeal")
 	@Expose
 	private Integer idMeal;
@@ -19,6 +20,14 @@ public class ApiDishRetrofit {
 	@SerializedName("strMealThumb")
 	@Expose
 	private String imageUrl;
+
+	@SerializedName("strArea")
+	@Expose
+	private String area;
+
+	@SerializedName("strInstructions")
+	@Expose
+	private String instructions;
 
 	public Integer getIdMeal() {
 		return idMeal;
@@ -50,6 +59,22 @@ public class ApiDishRetrofit {
 
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
+	}
+
+	public String getArea() {
+		return area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
+	}
+
+	public String getInstructions() {
+		return instructions;
+	}
+
+	public void setInstructions(String instructions) {
+		this.instructions = instructions;
 	}
 
 }

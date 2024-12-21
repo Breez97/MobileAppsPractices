@@ -14,8 +14,4 @@ public class ApiResponse {
 		return meals;
 	}
 
-	public void setMeals(List<ApiDishRetrofit> meals) {
-		this.meals = meals;
-	}
-
 }
