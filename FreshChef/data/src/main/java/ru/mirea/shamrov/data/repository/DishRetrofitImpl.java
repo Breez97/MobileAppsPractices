@@ -31,7 +31,17 @@ public class DishRetrofitImpl implements DishRetrofitRepository {
 
 	@Override
 	public void getDishById(Integer id, Callback callback) {
+		apiDataSource.getDishById(id, new ApiDataSource.Callback() {
+			@Override
+			public void onSuccess(ApiDishRetrofit apiDish) {
+				callback.onSuccess(mapRetrofitToDomain(apiDish));
+			}
 
+			@Override
+			public void onError(Throwable throwable) {
+				callback.onError(throwable);
+			}
+		});
 	}
 
 	private DishRetrofitDTO mapRetrofitToDomain(ApiDishRetrofit apiDishRetrofit) {

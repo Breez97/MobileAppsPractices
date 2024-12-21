@@ -46,4 +46,28 @@ public class ApiDataSourceRetrofit implements ApiDataSource {
 		});
 	}
 
+	@Override
+	public void getDishById(Integer id, Callback callback) {
+		Call<ApiResponse> call = apiService.getDishById(id);
+		call.enqueue(new retrofit2.Callback<ApiResponse>() {
+			@Override
+			public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+				if (response.isSuccessful() && response.body() != null && response.body().getMeals() != null && !response.body().getMeals().isEmpty()) {
+					ApiDishRetrofit dish = response.body().getMeals().get(0);
+					if (dish.getTitle() != null && dish.getCategory() != null) {
+						callback.onSuccess(dish);
+					} else {
+						callback.onError(new Exception("Неполная информация о блюде"));
+					}
+				} else {
+					callback.onError(new Exception("Ошибка: " + response.code()));
+				}
+			}
+
+			@Override
+			public void onFailure(Call<ApiResponse> call, Throwable throwable) {
+				callback.onError(throwable);
+			}
+		});
+	}
 }

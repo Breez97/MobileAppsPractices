@@ -11,4 +11,6 @@ public interface ApiDataSource {
 
 	void getRandomDish(Callback callback);
 
+	void getDishById(Integer id, Callback callback);
+
 }
